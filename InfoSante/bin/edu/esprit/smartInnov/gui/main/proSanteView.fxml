@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxWidth="-1.0" prefHeight="483.0" prefWidth="724.0"
+	xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2"
+	fx:controller="edu.esprit.smartInnov.gui.main.ProSanteController">
+	<!-- TODO Add Nodes -->
+	<children>
+		<SplitPane dividerPositions="0.21413721413721415"
+			focusTraversable="true" layoutX="0.0" layoutY="0.0" orientation="VERTICAL"
+			prefHeight="483.0" prefWidth="724.0">
+			<items>
+				<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0"
+					prefWidth="160.0">
+					<children>
+						<Label layoutX="313.0" layoutY="59.0"
+							style="-fx-background-color:transparent;" text="Spécialité:">
+							<font>
+								<Font name="Ebrima Bold" size="12.0" fx:id="x1" />
+							</font>
+						</Label>
+						<Label font="$x1" layoutX="29.0" layoutY="58.0"
+							style="-fx-background-color:transparent;" text="Adresse:" />
+						<ComboBox fx:id="filterSpecialite" layoutX="405.0"
+							layoutY="56.0" prefHeight="21.0" prefWidth="143.0"
+							style="-fx-background-radius: 1em;">
+							<items>
+								<FXCollections fx:factory="observableArrayList">
+									<String fx:value="Item 1" />
+									<String fx:value="Item 2" />
+									<String fx:value="Item 3" />
+								</FXCollections>
+							</items>
+						</ComboBox>
+						<Label font="$x1" layoutX="37.0" layoutY="18.0"
+							style="-fx-background-color:transparent;" text="Nom:" />
+						<TextField fx:id="filterNom" layoutX="85.0" layoutY="15.0"
+							prefWidth="144.0" style="-fx-background-radius: 1em;" />
+						<Label font="$x1" layoutX="313.0" layoutY="18.0"
+							style="-fx-background-color:transparent;&#10;" text="Prénom:" />
+						<TextField fx:id="filterPrenom" layoutX="405.0" layoutY="15.0"
+							prefWidth="144.0" style="-fx-background-radius: 1em;" />
+						<Button fx:id="filterButton" font="$x1" layoutX="639.0"
+							layoutY="66.0" mnemonicParsing="false" onAction="#filter"
+							style="-fx-background-color:#00A2D3;&#10;-fx-background-radius: 1em; &#10;-fx-cursor: hand;"
+							text="Filtrer" textFill="WHITE"/>
+						
+						<TextField fx:id="filterAdresse" layoutX="85.0" layoutY="52.0"
+							prefWidth="144.0" style="-fx-background-radius: 1em;" />
+					</children>
+				</AnchorPane>
+				<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0"
+					prefWidth="160.0">
+					<children>
+						<TableView fx:id="listProSante" layoutX="0.0" layoutY="0.0"
+							prefHeight="375.0" prefWidth="722.0">
+							<columns>
+								<TableColumn maxWidth="5000.0" minWidth="10.0"
+									prefWidth="115.0" text="Nom" fx:id="nomCol" />
+								<TableColumn maxWidth="5000.0" minWidth="10.0"
+									prefWidth="115.0" text="Prénom" fx:id="prenomCol" />
+								<TableColumn maxWidth="5000.0" minWidth="10.0"
+									prefWidth="125.0" text="Spécialité" fx:id="specialiteCol" />
+								<TableColumn maxWidth="5000.0" minWidth="10.0"
+									prefWidth="135.0" text="Adresse" fx:id="adresseCol" />
+								<TableColumn prefWidth="115.0" text="Numéro" fx:id="numTelCol" />
+								<TableColumn maxWidth="5000.0" minWidth="10.0"
+									prefWidth="115.0" text="Détails" />
+							</columns>
+						</TableView>
+					</children>
+				</AnchorPane>
+			</items>
+		</SplitPane>
+	</children>
+	<stylesheets>
+		<URL value="@img/styles.css" />
+	</stylesheets>
+</AnchorPane>

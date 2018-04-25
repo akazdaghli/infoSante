@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="483.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.smartInnov.gui.main.SendMailController">
+   <children>
+      <RadioButton fx:id="destPro" layoutX="242.0" layoutY="56.0" mnemonicParsing="false" text="Professionels de santé" />
+      <RadioButton fx:id="destPar" layoutX="417.0" layoutY="56.0" mnemonicParsing="false" text="Particuliers" />
+      <RadioButton fx:id="destAll" layoutX="546.0" layoutY="56.0" mnemonicParsing="false" text="Tous" />
+      <Label layoutX="27.0" layoutY="56.0" style="-fx-background-color: ransparent;" text="Envoyer à:" />
+      <Label layoutX="27.0" layoutY="118.0" style="-fx-background-color: ransparent;" text="Objet:" />
+      <Label layoutX="27.0" layoutY="186.0" style="-fx-background-color: ransparent;" text="Message:" />
+      <TextField fx:id="objetTextField" layoutX="242.0" layoutY="114.0" prefHeight="25.0" prefWidth="356.0" />
+      <TextArea fx:id="msgTextArea" layoutX="242.0" layoutY="195.0" prefHeight="200.0" prefWidth="356.0" />
+      <Button fx:id="sendbtn" layoutX="513.0" layoutY="428.0" mnemonicParsing="false" onMouseClicked="#sendMail" style="-fx-background-radius: 5em; -fx-background-color: #00A2D3;" text="Envoyer" textFill="#fcfafa">
+         <font>
+            <Font name="Ebrima Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="19.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/sent-mail.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>

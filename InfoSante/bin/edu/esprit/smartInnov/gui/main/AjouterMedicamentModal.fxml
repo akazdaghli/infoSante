@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.smartInnov.gui.main.AjouterMedicamentController">
+   <children>
+      <Label layoutX="14.0" layoutY="24.0" text="Libellé:" />
+      <Label layoutX="14.0" layoutY="80.0" text="Type:" />
+      <Label layoutX="15.0" layoutY="141.0" text="Application:" />
+      <Label layoutX="15.0" layoutY="209.0" text="Laboratoire:" />
+      <Button layoutX="161.0" layoutY="335.0" mnemonicParsing="false" onMouseClicked="#ajouter" style="-fx-background-radius: 5em; -fx-background-color: #00A2D3;" text="Valider" textFill="#f8f8f8">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Ebrima Bold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="21.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/tick-inside-circle.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <TextField layoutX="86.0" layoutY="20.0" style="-fx-background-radius: 5em;" />
+      <ComboBox layoutX="85.0" layoutY="76.0" prefWidth="150.0" style="-fx-background-radius: 5em;" />
+      <ComboBox layoutX="86.0" layoutY="137.0" prefWidth="150.0" style="-fx-background-radius: 5em;" />
+      <ComboBox layoutX="86.0" layoutY="205.0" prefWidth="150.0" style="-fx-background-radius: 5em;" />
+      <Label layoutX="15.0" layoutY="271.0" text="Maladies:" />
+      <MenuButton fx:id="choices" layoutX="86.0" layoutY="267.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-radius: 5em;" text="MenuButton">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+          <MenuItem mnemonicParsing="false" text="Action 2" />
+        </items>
+      </MenuButton>
+   </children>
+</AnchorPane>

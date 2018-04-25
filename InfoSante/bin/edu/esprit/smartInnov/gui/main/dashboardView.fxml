@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="483.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.smartInnov.gui.main.DashboardController">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="37.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/add-user.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="287.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/dialog.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="552.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/dialog%20(1).png" />
+         </image>
+      </ImageView>
+      <Label fx:id="usersQueueLabel" layoutX="256.0" layoutY="201.0" style="-fx-background-color: transparent;" text="120 Exériences partagées">
+         <font>
+            <Font name="Ebrima Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="newUsersLabel" layoutX="6.0" layoutY="201.0" style="-fx-background-color: transparent;" text="120 Exériences partagées">
+         <font>
+            <Font name="Ebrima Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="experiencePartageesLabel" layoutX="521.0" layoutY="200.0" style="-fx-background-color: transparent;" text="120 Exériences partagées">
+         <font>
+            <Font name="Ebrima Bold" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

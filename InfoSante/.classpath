@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_161"/>
+	<classpathentry excluding="edu/esprit/smartInnov/entites/Pharmacien.java|edu/esprit/smartInnov/services/PharmacienService.java" kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/akozdoghli/Desktop/1ére année/JavaWorkSpace/mysql-connector-java-5.1.45/mysql-connector-java-5.1.45-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/akozdoghli/Desktop/1ére année/mail.jar"/>
+	<classpathentry kind="lib" path="C:/Users/akozdoghli/Desktop/1ére année/c3p0-0.9.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/akozdoghli/Desktop/1ére année/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="C:/Users/akozdoghli/Desktop/1ére année/quartz-2.2.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/akozdoghli/Desktop/1ére année/quartz-jobs-2.2.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/akozdoghli/Desktop/1ére année/slf4j-api-1.7.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/akozdoghli/Desktop/1ére année/slf4j-log4j12-1.7.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/akozdoghli/Desktop/1ére année/iText-2.1.7.js2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/akozdoghli/Desktop/1ére année/jasperreports-5.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/akozdoghli/Desktop/1ére année/jcommon-1.0.15.jar"/>
+	<classpathentry kind="lib" path="C:/Users/akozdoghli/Desktop/1ére année/jfreechart-1.0.12.jar"/>
+	<classpathentry kind="lib" path="C:/Users/akozdoghli/Desktop/aspose.words.jdk16-7.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/akozdoghli/Desktop/controlsfx-8.40.14.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="483.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.smartInnov.gui.main.ProduitController">
+   <children>
+      <TableView fx:id="produitTable" layoutY="112.0" prefHeight="375.0" prefWidth="724.0">
+        <columns>
+          <TableColumn fx:id="libelleCol" prefWidth="181.0" text="Libellé" />
+          <TableColumn fx:id="categorieCol" prefWidth="181.0" text="Catégorie" />
+            <TableColumn fx:id="laboCol" prefWidth="181.0" text="Laboratoire" />
+            <TableColumn fx:id="actionCol" prefWidth="180.0" text="Action" />
+        </columns>
+      </TableView>
+      <Label layoutX="14.0" layoutY="26.0" style="-fx-background-color: transparent;" text="Libellé:" />
+      <TextField fx:id="libelleFilter" layoutX="61.0" layoutY="22.0" style="-fx-background-radius: 5em;" />
+      <Label layoutX="224.0" layoutY="26.0" style="-fx-background-color: transparent;" text="Catégorie:" />
+      <Label layoutX="453.0" layoutY="26.0" style="-fx-background-color: transparent;" text="Laboratoire:" />
+      <ComboBox fx:id="categorieFilter" layoutX="287.0" layoutY="22.0" prefWidth="150.0" style="-fx-background-radius: 5em;" />
+      <ComboBox fx:id="laboFilter" layoutX="530.0" layoutY="22.0" prefWidth="150.0" style="-fx-background-radius: 5em;" />
+      <Button layoutX="605.0" layoutY="71.0" mnemonicParsing="false" onMouseClicked="#filtrer" prefHeight="25.0" prefWidth="77.0" style="-fx-background-color: #00A2D3; -fx-background-radius: 5em;" text="Filtrer" textFill="#fcfafa">
+         <graphic>
+            <ImageView fitHeight="19.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/magnifier.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Ebrima Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="addBtn" layoutX="517.0" layoutY="71.0" mnemonicParsing="false" onMouseClicked="#showAjouterProduitModal" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: #00A2D3; -fx-background-radius: 5em;" text="Ajouter" textFill="#fcfafa">
+         <font>
+            <Font name="Ebrima Bold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/plus.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

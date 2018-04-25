@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="edu.esprit.smartInnov.gui.main.AcceuilController">
+  <children>
+    <VBox layoutX="0.0" layoutY="0.0" prefHeight="600.0" prefWidth="300.0" styleClass="sidebar">
+      <children>
+        <Label fx:id="userConnectedLabel" alignment="CENTER" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color : #00A2D3;" text="Aymen Kazdaghli" textAlignment="CENTER" textFill="WHITE" textOverrun="LEADING_ELLIPSIS" underline="false" wrapText="false">
+          <font>
+            <Font name="Ebrima Bold" size="18.0" fx:id="x1" />
+          </font>
+        </Label>
+        <AnchorPane id="AnchorPane" mouseTransparent="false" prefHeight="66.0" prefWidth="300.0">
+          <children>
+            <ImageView id="home" fitHeight="39.0" fitWidth="38.0" layoutX="32.0" layoutY="13.0" pickOnBounds="true">
+              <image>
+                <Image url="@img/house.png" preserveRatio="true" smooth="true" />
+              </image>
+            </ImageView>
+            <Label layoutX="96.0" layoutY="20.0" opacity="0.78" style="-fx-background-color : #333645;" text="Acceuil" textFill="WHITE">
+              <font>
+                <Font name="Ebrima Bold" size="20.0" fx:id="x2" />
+              </font>
+            </Label>
+          </children>
+        </AnchorPane>
+        <AnchorPane id="AnchorPane" mouseTransparent="false" prefHeight="66.0" prefWidth="300.0">
+          <children>
+            <ImageView id="home" fitHeight="39.0" fitWidth="38.0" layoutX="32.0" layoutY="13.0" pickOnBounds="true">
+              <image>
+                <Image url="@img/doctor.png" preserveRatio="true" smooth="true" />
+              </image>
+            </ImageView>
+            <Label fx:id="proSanteLabel" font="$x1" layoutX="96.0" layoutY="20.0" onMouseClicked="#navigateToProSante" onMousePressed="#navigateToProSante" opacity="0.78" style="-fx-background-color : #333645;" text="Professionnels de santé" textFill="WHITE" />
+          </children>
+        </AnchorPane>
+        <AnchorPane id="AnchorPane" mouseTransparent="false" prefHeight="66.0" prefWidth="300.0">
+          <children>
+            <ImageView id="home" fitHeight="39.0" fitWidth="38.0" layoutX="32.0" layoutY="13.0" pickOnBounds="true">
+              <image>
+                <Image url="@img/cosmetics.png" preserveRatio="true" smooth="true" />
+              </image>
+            </ImageView>
+            <Label font="$x2" layoutX="96.0" layoutY="20.0" opacity="0.78" style="-fx-background-color : #333645;" text="Produits" textFill="WHITE" />
+          </children>
+        </AnchorPane>
+        <AnchorPane id="AnchorPane" mouseTransparent="false" prefHeight="66.0" prefWidth="300.0">
+          <children>
+            <ImageView id="home" fitHeight="39.0" fitWidth="38.0" layoutX="32.0" layoutY="13.0" pickOnBounds="true">
+              <image>
+                <Image url="@img/heart-rate.png" preserveRatio="true" smooth="true" />
+              </image>
+            </ImageView>
+            <Label font="$x2" layoutX="96.0" layoutY="20.0" opacity="0.78" pickOnBounds="false" style="-fx-background-color : #333645;" text="Rendez-vous" textFill="WHITE" />
+          </children>
+        </AnchorPane>
+        <AnchorPane id="AnchorPane" mouseTransparent="false" prefHeight="66.0" prefWidth="300.0">
+          <children>
+            <ImageView id="home" fitHeight="39.0" fitWidth="38.0" layoutX="32.0" layoutY="13.0" pickOnBounds="true">
+              <image>
+                <Image url="@img/medicine.png" preserveRatio="true" smooth="true" />
+              </image>
+            </ImageView>
+            <Label font="$x2" layoutX="96.0" layoutY="20.0" opacity="0.78" style="-fx-background-color : #333645;" text="Symptomes" textFill="WHITE" />
+          </children>
+        </AnchorPane>
+        <AnchorPane id="AnchorPane" mouseTransparent="false" prefHeight="66.0" prefWidth="300.0">
+          <children>
+            <ImageView id="home" fitHeight="39.0" fitWidth="38.0" layoutX="32.0" layoutY="13.0" pickOnBounds="true">
+              <image>
+                <Image url="@img/pill.png" preserveRatio="true" smooth="true" />
+              </image>
+            </ImageView>
+            <Label font="$x2" layoutX="96.0" layoutY="20.0" opacity="0.78" style="-fx-background-color : #333645;" text="Médicaments" textFill="WHITE" />
+          </children>
+        </AnchorPane>
+        <AnchorPane id="AnchorPane" mouseTransparent="false" prefHeight="66.0" prefWidth="300.0">
+          <children>
+            <ImageView id="home" fitHeight="39.0" fitWidth="38.0" layoutX="32.0" layoutY="13.0" pickOnBounds="true">
+              <image>
+                <Image url="@img/microscope.png" preserveRatio="true" smooth="true" />
+              </image>
+            </ImageView>
+            <Label font="$x2" layoutX="96.0" layoutY="20.0" opacity="0.78" style="-fx-background-color : #333645;" text="Visite en ligne" textFill="WHITE" />
+          </children>
+        </AnchorPane>
+        <AnchorPane id="AnchorPane" mouseTransparent="false" prefHeight="66.0" prefWidth="300.0">
+          <children>
+            <ImageView id="home" fitHeight="39.0" fitWidth="38.0" layoutX="32.0" layoutY="13.0" pickOnBounds="true">
+              <image>
+                <Image url="@img/mortar.png" preserveRatio="true" smooth="true" />
+              </image>
+            </ImageView>
+            <Label font="$x2" layoutX="96.0" layoutY="20.0" opacity="0.78" style="-fx-background-color : #333645;" text="Phytotherapie" textFill="WHITE" />
+          </children>
+        </AnchorPane>
+      </children>
+    </VBox>
+    <VBox layoutX="300.0" layoutY="0.0" prefHeight="600.0" prefWidth="724.0" styleClass="parent">
+      <children>
+        <Pane prefHeight="75.0" prefWidth="724.0" style="-fx-background-color:#fff;&#10;">
+          <children>
+            <ImageView fx:id="logoutImg" blendMode="SRC_OVER" cache="false" fitHeight="35.25" fitWidth="47.0" layoutX="667.0" layoutY="18.0" mouseTransparent="true" onMouseClicked="#logout" onMousePressed="#logout" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+              <image>
+                <Image url="@img/logout.png" />
+              </image>
+            </ImageView>
+            <Label layoutX="24.0" layoutY="25.0" opacity="0.5" style="-fx-background-color:white&#10;" text="Acceuil">
+              <font>
+                <Font name="Ebrima Bold" size="21.0" />
+              </font>
+            </Label>
+          </children>
+          <effect>
+            <DropShadow blurType="ONE_PASS_BOX" height="15.0" radius="7.0" width="15.0" />
+          </effect>
+        </Pane>
+        <HBox id="HBox" alignment="CENTER" spacing="5.0">
+          <children>
+            <ImageView fitHeight="482.9169849572466" fitWidth="723.9999389648438" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+              <image>
+                <Image url="@img/bg.jpg" />
+              </image>
+            </ImageView>
+          </children>
+        </HBox>
+        <Pane prefHeight="46.0" prefWidth="724.0">
+          <children>
+            <Label layoutX="14.0" layoutY="15.0" opacity="0.68" style="-fx-background-color : white;" text="SmartInnov © 2018">
+              <font>
+                <Font name="Ebrima" size="10.0" />
+              </font>
+            </Label>
+          </children>
+        </Pane>
+      </children>
+    </VBox>
+  </children>
+  <stylesheets>
+    <URL value="@img/styles.css" />
+  </stylesheets>
+</AnchorPane>
