@@ -37,17 +37,19 @@ public class Utilitaire {
 		return hashtext;
 	}
 	
-	public static InputStream importerImage(Control imgName) {
+	public static InputStream importerImage(Control imgName, boolean updateLabel) {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Image produit");
 		Utilitaire.setExtFiltersToImg(fileChooser);
 		File img = fileChooser.showOpenDialog(imgName.getScene().getWindow());
 		if(img != null) {
-			if(imgName instanceof Label) {
-				((Label) imgName).setText(img.getName());
-			}
-			if(imgName instanceof TextField) {
-				((TextField) imgName).setText(img.getName());
+			if(updateLabel) {
+					if(imgName instanceof Label) {
+						((Label) imgName).setText(img.getName());
+					}
+					if(imgName instanceof TextField) {
+						((TextField) imgName).setText(img.getName());
+					}
 			}
 			try {
 				BufferedImage bufferedImage = ImageIO.read(img);

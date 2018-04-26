@@ -111,7 +111,7 @@ public class AjouterProduitController {
 	}
 	
 	public void importerImage() {
-		photo = Utilitaire.importerImage(imgName);
+		photo = Utilitaire.importerImage(imgName, true);
 	}
 	
 	

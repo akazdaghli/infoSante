@@ -1,5 +1,6 @@
 package edu.esprit.smartInnov.gui.main;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
@@ -7,6 +8,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import edu.esprit.smartInnov.entites.Utilisateur;
+import edu.esprit.smartInnov.services.UtilisateurService;
+import edu.esprit.smartInnov.utils.Utilitaire;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -67,16 +70,21 @@ public class AcceuilController {
 	private Circle imgShape;
 
 	private Utilisateur userConnected;
+	private UtilisateurService utilisateurService;
 	private static final Logger LOGGER = Logger.getLogger(AcceuilController.class.getName());
 
 	public void initComponents(Utilisateur userConnected) {
 		this.userConnected = userConnected;
 		userConnectedLabel.setText(userConnected.getPrenom() + " " + userConnected.getNom());
+		utilisateurService = new UtilisateurService();
 		if(userConnected.getPhoto() != null) {
 			InputStream img = userConnected.getPhoto();
 			Image userPhoto = new Image(img);
 			imgShape.setFill(new ImagePattern(userPhoto));
-//			userConnectedPhoto.setImage(userPhoto);
+		}else {
+			InputStream defaultAvatar = Main.class.getResourceAsStream("img/defaultavatar.png");
+			Image userPhoto = new Image(defaultAvatar);
+			imgShape.setFill(new ImagePattern(userPhoto));
 		}
 	}
 
@@ -214,6 +222,16 @@ public class AcceuilController {
 		String selectedStyle = "-fx-background-color: #00A2D3;-fx-cursor: hand;";
 		pane.setStyle(selectedStyle);
 		lbl.setStyle(selectedStyle);
+	}
+	
+	public void changeProfilPhoto() {
+		InputStream newPhoto = Utilitaire.importerImage(userConnectedLabel,false);
+		if(newPhoto != null) {
+			Image newImg = new Image(newPhoto);
+			imgShape.setFill(new ImagePattern(newImg));
+			userConnected.setPhoto(newPhoto);
+			utilisateurService.updateUserPhoto(userConnected);
+		}
 	}
 
 	public void logout() throws IOException {

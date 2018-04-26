@@ -62,6 +62,20 @@ public class UtilisateurService {
 		return medecins;
 	}
 	
+	public void updateUserPhoto(Utilisateur user) {
+		String updateQuery = "UPDATE Utilisateur SET photo = ? WHERE id= ?";
+		try (PreparedStatement ps = cnx.prepareStatement(updateQuery);){
+			
+			ps.setBlob(1, user.getPhoto());
+			ps.setLong(2, user.getId());
+			LOGGER.log(Level.INFO, ps.toString());
+			ps.executeUpdate();
+			LOGGER.log(Level.INFO, "User photo updated");
+		} catch (SQLException e) {
+			LOGGER.log(Level.SEVERE, e.getMessage());
+		}
+	}
+	
 	public List<VProSante> getAllVProSante(){
 		String searchQuery = "SELECT * FROM v_pro_sante";
 		LOGGER.log(Level.INFO, searchQuery);
@@ -69,7 +83,7 @@ public class UtilisateurService {
 			ResultSet rs = ps.executeQuery();
 			return new VProSanteRowMapper(rs).getVProSantes();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, e.getMessage());
 		}
 		return null;
 	}
@@ -86,7 +100,7 @@ public class UtilisateurService {
 				return new UtilisateurRowMapper(rs).getUtilisateurs();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, e.getMessage());
 		}
 		
 		return patients;
@@ -104,7 +118,7 @@ public class UtilisateurService {
 				return new UtilisateurRowMapper(rs).getUtilisateurs();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, e.getMessage());
 		}
 		
 		return patients;
@@ -119,7 +133,7 @@ public class UtilisateurService {
 			ResultSet rs = ps.executeQuery();
 			return new UtilisateurRowMapper(rs).getFirstUtilisateur();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, e.getMessage());
 		}
 		return null;
 	}
@@ -132,7 +146,7 @@ public class UtilisateurService {
 			ResultSet rs = ps.executeQuery();
 			return new UtilisateurRowMapper(rs).getFirstUtilisateur();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, e.getMessage());
 		}
 		return null;
 	}
@@ -145,7 +159,7 @@ public class UtilisateurService {
 			ResultSet rs = ps.executeQuery();
 			return new UtilisateurRowMapper(rs).getFirstUtilisateur();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, e.getMessage());
 		}
 		return null;
 	}
@@ -158,7 +172,7 @@ public class UtilisateurService {
 			ResultSet rs = ps.executeQuery();
 			return new UtilisateurRowMapper(rs).getUtilisateurs().size() > 0;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, e.getMessage());
 		}
 		return true;
 	}

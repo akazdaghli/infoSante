@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="483.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.smartInnov.gui.main.PhytotherapieController">
    <children>
-      <ImageView fitHeight="236.0" fitWidth="259.0" layoutX="28.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="297.0" layoutY="45.0" text="Label" wrapText="true" />
-      <Hyperlink layoutX="644.0" layoutY="446.0" text="Suivant" />
-      <Hyperlink layoutX="576.0" layoutY="446.0" text="Précédent" />
+      <Hyperlink fx:id="suivant" layoutX="644.0" layoutY="446.0" onMouseClicked="#increment" text="Suivant" />
+      <Hyperlink fx:id="prec" layoutX="576.0" layoutY="446.0" onMouseClicked="#decrement" text="Précédent" />
+      <Label fx:id="libelle" layoutX="273.0" layoutY="31.0" style="-fx-background-color: transparent;" text="Label">
+         <font>
+            <Font name="Ebrima Bold" size="18.0" />
+         </font>
+      </Label>
+      <ScrollPane layoutX="273.0" layoutY="91.0" prefHeight="345.0" prefViewportHeight="343.0" prefViewportWidth="438.0" prefWidth="420.0">
+         <content>
+            <TextFlow fx:id="detail" layoutX="273.0" layoutY="91.0" prefHeight="343.0" prefWidth="418.0" />
+         </content>
+      </ScrollPane>
+      <Ellipse fx:id="phytoImg" fill="#1f93ff00" layoutX="132.0" layoutY="263.0" radiusX="123.0" radiusY="173.0" stroke="TRANSPARENT" strokeType="INSIDE" />
    </children>
 </AnchorPane>

@@ -122,7 +122,7 @@ public class InscriptionController {
 	}
 	
 	public void importImage() {
-		photo = Utilitaire.importerImage(imageUpload);
+		photo = Utilitaire.importerImage(imageUpload, true);
 	}
 	
 	public void changeVisibility() {

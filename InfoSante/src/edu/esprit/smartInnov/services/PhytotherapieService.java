@@ -73,6 +73,7 @@ public class PhytotherapieService implements Serializable {
 			ResultSet rs = s.executeQuery(searchQuery);
 			while(rs.next()) {
 				Phytotherapie p = new Phytotherapie();
+				p.setPhoto(rs.getBinaryStream(4));
 				p.setDetail(rs.getString(3));
 				p.setLibelle(rs.getString(2));
 				p.setId(rs.getLong(1));

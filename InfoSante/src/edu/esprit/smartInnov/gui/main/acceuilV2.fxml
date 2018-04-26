@@ -130,7 +130,7 @@
             <Image url="@img/logout.png" />
           </image>
         </ImageView>
-            <Circle fx:id="imgShape" fill="#1f93ff03" layoutX="36.0" layoutY="38.0" radius="36.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="imgShape" fill="#1f93ff03" layoutX="36.0" layoutY="38.0" onMouseClicked="#changeProfilPhoto" radius="36.0" stroke="BLACK" strokeType="INSIDE" />
       </children>
     </Pane>
   </top>
