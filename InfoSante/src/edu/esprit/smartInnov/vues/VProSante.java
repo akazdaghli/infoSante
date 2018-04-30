@@ -6,6 +6,7 @@ public class VProSante {
 	private String nom;
 	private String prenom;
 	private String numTel;
+	private String mail;
 	private String libelle;
 	private String adresse;
 	
@@ -13,16 +14,17 @@ public class VProSante {
 		// TODO Auto-generated constructor stub
 	}
 
-	public VProSante(String nom, String prenom, String numTel, String libelle, String adresse) {
+	public VProSante(String nom, String prenom, String numTel, String libelle, String adresse, String mail) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.numTel = numTel;
 		this.libelle = libelle;
 		this.adresse = adresse;
+		this.mail = mail;
 	}
 
-	public VProSante(Long idProSante, String nom, String prenom, String numTel, String libelle, String adresse) {
+	public VProSante(Long idProSante, String nom, String prenom, String numTel, String libelle, String adresse, String mail) {
 		super();
 		this.idProSante = idProSante;
 		this.nom = nom;
@@ -30,6 +32,7 @@ public class VProSante {
 		this.numTel = numTel;
 		this.libelle = libelle;
 		this.adresse = adresse;
+		this.mail = mail;
 	}
 
 	public Long getIdProSante() {
@@ -78,6 +81,14 @@ public class VProSante {
 
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 	
 	

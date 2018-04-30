@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.controlsfx.control.CheckListView;
 
@@ -24,6 +25,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -36,6 +38,8 @@ public class ConsultationEnLigneController {
 	private PieChart pourcentageChart;
 	@FXML
 	private Label testLabel;
+	@FXML
+	private TextField filtreText;
 	private List<Symptome> symptomes;
 	private List<Symptome> symptomesChecked;
 	private SymptomeService symptomeService;
@@ -48,9 +52,8 @@ public class ConsultationEnLigneController {
 		maladieService = new MaladieService();
 		symptomes = symptomeService.getListSymptomes();
 		symptomesCheckList.getItems().clear();
-		for (Symptome s : symptomes) {
-			symptomesCheckList.getItems().add(s.getDesignation());
-		}
+		fillCheckView(symptomes);
+		
 		symptomesCheckList.getCheckModel().getCheckedIndices().addListener(new ListChangeListener<Integer>() {
 			@Override
 			public void onChanged(javafx.collections.ListChangeListener.Change<? extends Integer> c) {
@@ -70,6 +73,13 @@ public class ConsultationEnLigneController {
 				}
 			}
 		});
+	}
+	
+	public void fillCheckView(List<Symptome> symptomes) {
+		symptomesCheckList.getItems().clear();
+		for (Symptome s : symptomes) {
+			symptomesCheckList.getItems().add(s.getDesignation());
+		}
 	}
 
 	public void validerListSymptomes() {
@@ -100,13 +110,22 @@ public class ConsultationEnLigneController {
 	                          String name = data.getName();
 	                          double value = data.getPieValue();
 	                          Maladie selectedMaladie = maladieService.getMaladieByLibelle(name);
+	                          try {
+								showModalListMedicamentPhytotherapie(mouseEvent, selectedMaladie);
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
 	                          
-	                          //Afficher modal contenant la liste des medicaments et des phytotherapies du maladie selectionnee
 	                      }
 	                  });
 	         
 	         
 	      }
+	}
+	
+	public void filtrerListView() {
+		List<Symptome> filtredList = symptomes.stream().filter(s->s.getDesignation().toLowerCase().contains(filtreText.getText().toLowerCase())).collect(Collectors.toList());
+		fillCheckView(filtredList);
 	}
 	
 	public void showModalListMedicamentPhytotherapie(MouseEvent event,Maladie m) throws IOException {

@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="C:/Users/akozdoghli/Desktop/1ére année/jfreechart-1.0.12.jar"/>
 	<classpathentry kind="lib" path="C:/Users/akozdoghli/Desktop/aspose.words.jdk16-7.0.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/akozdoghli/Desktop/controlsfx-8.40.14.jar"/>
+	<classpathentry kind="lib" path="C:/Users/akozdoghli/Desktop/AllWin-2016 Version desktop/libs/GMapsFX-2.0.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

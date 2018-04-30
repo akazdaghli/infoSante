@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="250.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.smartInnov.gui.main.MotifRejetModalController">
+   <children>
+      <Label layoutX="31.0" layoutY="21.0" text="Veuillez indiquer un motif de  rejet:">
+         <font>
+            <Font name="Ebrima Bold" size="12.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="motif1" layoutX="30.0" layoutY="65.0" mnemonicParsing="false" text="Documents non lisibles" />
+      <RadioButton fx:id="motif2" layoutX="30.0" layoutY="115.0" mnemonicParsing="false" text="Documents non certifiés" />
+      <RadioButton fx:id="motif3" layoutX="30.0" layoutY="165.0" mnemonicParsing="false" text="Dossier incomplet" />
+      <Button fx:id="valider" layoutX="281.0" layoutY="199.0" mnemonicParsing="false" onMouseClicked="#validerBtn" style="-fx-background-color: #00A2D3; -fx-background-radius: 5em;" text="Valider" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../Desktop/MedIt/InfoSante/src/edu/esprit/smartInnov/gui/main/img/tick-inside-circle.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="annuler" layoutX="360.0" layoutY="199.0" mnemonicParsing="false" onMouseClicked="#annulerbtn" style="-fx-background-color: #00A2D3; -fx-background-radius: 5em;" text="Annuler" textFill="#fcfcfc">
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../Desktop/MedIt/InfoSante/src/edu/esprit/smartInnov/gui/main/img/signal.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

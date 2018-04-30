@@ -1,8 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
-</AnchorPane>
 
+<AnchorPane prefHeight="500.0" prefWidth="700.0" stylesheets="@../../../../../../../../../Desktop/MedIt/InfoSante/src/edu/esprit/smartInnov/gui/main/img/styles.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="edu.esprit.smartInnov.gui.main.ListMedicamentPhytotherapieModalController">
+   <children>
+      <TableView fx:id="medsTable" layoutY="20.0" prefHeight="230.0" prefWidth="700.0">
+        <columns>
+          <TableColumn fx:id="libelleCol" prefWidth="175.0" text="Médicament" />
+          <TableColumn fx:id="typeCol" prefWidth="175.0" text="Type" />
+            <TableColumn fx:id="applicationCol" prefWidth="175.0" text="Application" />
+            <TableColumn fx:id="laboCol" prefWidth="175.0" text="Laboratoire" />
+        </columns>
+      </TableView>
+      <TableView fx:id="phytosTable" layoutY="270.0" prefHeight="230.0" prefWidth="700.0">
+        <columns>
+          <TableColumn fx:id="phytoLibelleCol" prefWidth="175.0" text="Phytothérapie" />
+          <TableColumn fx:id="phytoDetailCol" prefWidth="525.0" text="Détails" />
+        </columns>
+      </TableView>
+      <Label layoutX="14.0" layoutY="4.0" style="-fx-background-color: transparent;" text="Liste des médicament:s">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="254.0" style="-fx-background-color: transparent;" text="Liste des phytothérapies:s">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

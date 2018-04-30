@@ -64,15 +64,15 @@ public class PhytotherapieController {
 	
 	public void fillPhyto(Phytotherapie p) {
 		
-//			if(p.getPhoto() != null) {
-//				Image img = new Image(p.getPhoto());
-//				phytoImg.setFill(new ImagePattern(img));
-//			}
-//			else {
-//				InputStream noImg = Main.class.getResourceAsStream("img/no_image.jpg");
-//				Image noPhoto = new Image(noImg);
-//				phytoImg.setFill(new ImagePattern(noPhoto));
-//			}
+			if(p.getPhoto() != null) {
+				Image img = new Image(p.getPhoto());
+				phytoImg.setFill(new ImagePattern(img));
+			}
+			else {
+				InputStream noImg = Main.class.getResourceAsStream("img/no_image.jpg");
+				Image noPhoto = new Image(noImg);
+				phytoImg.setFill(new ImagePattern(noPhoto));
+			}
 		libelle.setText(p.getLibelle());
 		Text t = new Text(p.getDetail());
 		detail.getChildren().clear();

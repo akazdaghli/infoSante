@@ -33,7 +33,7 @@ public class NoticeModalController {
 	
 	public void exportNoticeToPdf() throws Exception {
 		LOGGER.log(Level.INFO, "Exporting notice to pdf ...");
-		File template = new File(ClassLoader.getSystemResource("/InfoSante/src/edu/esprit/smartInnov/gui/main/img/notice.docx").getFile());
+		File template = new File(getClass().getResource("img/notice.doc").toURI());
 		Document doc = new Document(template.getPath());
 		DocumentBuilder db = new DocumentBuilder(doc);
 		if(vMed != null) {

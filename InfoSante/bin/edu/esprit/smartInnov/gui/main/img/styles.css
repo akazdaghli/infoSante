@@ -6,8 +6,12 @@
 	-fx-background-color : #333645;
 }
 
+.button{
+	-fx-backgtound-radius : 5em;
+}
+
 .label{
-	-fx-background-color : #00A2D3;
+	-fx-background-color:transparent;
 }
 
 .menuItems:hover{
@@ -35,6 +39,10 @@
 .table-view .table-cell{
     -fx-text-fill: black;
     -fx-text-align : center;
+}
+
+.table-column{
+	-fx-alignment: CENTER;
 }
 
 .table-row-cell{

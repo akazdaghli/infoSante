@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="pane" maxHeight="600.0" maxWidth="1024.0" prefHeight="600.0" prefWidth="1024.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="edu.esprit.smartInnov.gui.main.AcceuilController">
+<BorderPane fx:id="pane" maxHeight="600.0" maxWidth="1024.0" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.smartInnov.gui.main.AcceuilController">
   <!-- TODO Add Nodes -->
   <bottom>
     <Pane prefHeight="46.0" prefWidth="724.0">
@@ -57,27 +57,27 @@
           <children>
             <ImageView id="home" fitHeight="39.0" fitWidth="38.0" layoutX="32.0" layoutY="13.0" pickOnBounds="true">
               <image>
-                <Image url="@img/cosmetics.png" preserveRatio="true" smooth="true" />
+                <Image preserveRatio="true" smooth="true" url="@img/cosmetics.png" />
               </image>
             </ImageView>
             <Label fx:id="produitLabel" font="$x1" layoutX="96.0" layoutY="20.0" onMouseClicked="#showProduitView" opacity="0.78" style="-fx-background-color : #333645;" text="Produits" textFill="WHITE" />
           </children>
         </AnchorPane>
-        <AnchorPane id="AnchorPane" mouseTransparent="false" prefHeight="66.0" prefWidth="300.0" style="-fx-cursor: hand;">
+        <AnchorPane id="AnchorPane" fx:id="inscriEnAttenteMenuItem" mouseTransparent="false" onMouseClicked="#showInscriEnAttenteView" prefHeight="66.0" prefWidth="300.0" style="-fx-cursor: hand;">
           <children>
             <ImageView id="home" fitHeight="39.0" fitWidth="38.0" layoutX="32.0" layoutY="13.0" pickOnBounds="true">
               <image>
-                <Image url="@img/heart-rate.png" preserveRatio="true" smooth="true" />
+                <Image url="@../../../../../../../../../Desktop/MedIt/InfoSante/src/edu/esprit/smartInnov/gui/main/img/add-user.png" />
               </image>
             </ImageView>
-            <Label font="$x1" layoutX="96.0" layoutY="20.0" opacity="0.78" pickOnBounds="false" style="-fx-background-color : #333645;" text="Rendez-vous" textFill="WHITE" />
+            <Label fx:id="inscriEnAttenteLabel" font="$x1" layoutX="96.0" layoutY="20.0" opacity="0.78" pickOnBounds="false" style="-fx-background-color : #333645;" text="Inscri en attente" textFill="WHITE" />
           </children>
         </AnchorPane>
         <AnchorPane id="AnchorPane" mouseTransparent="false" prefHeight="66.0" prefWidth="300.0" style="-fx-cursor: hand;">
           <children>
             <ImageView id="home" fitHeight="39.0" fitWidth="38.0" layoutX="32.0" layoutY="13.0" pickOnBounds="true">
               <image>
-                <Image url="@img/medicine.png" preserveRatio="true" smooth="true" />
+                <Image preserveRatio="true" smooth="true" url="@img/medicine.png" />
               </image>
             </ImageView>
             <Label font="$x1" layoutX="96.0" layoutY="20.0" opacity="0.78" style="-fx-background-color : #333645;" text="Symptomes" textFill="WHITE" />
@@ -87,7 +87,7 @@
           <children>
             <ImageView id="home" fitHeight="39.0" fitWidth="38.0" layoutX="32.0" layoutY="13.0" pickOnBounds="true">
               <image>
-                <Image url="@img/pill.png" preserveRatio="true" smooth="true" />
+                <Image preserveRatio="true" smooth="true" url="@img/pill.png" />
               </image>
             </ImageView>
             <Label fx:id="medicamentLabel" font="$x1" layoutX="96.0" layoutY="20.0" opacity="0.78" style="-fx-background-color : #333645;" text="Médicaments" textFill="WHITE" />
@@ -97,7 +97,7 @@
           <children>
             <ImageView id="home" fitHeight="39.0" fitWidth="38.0" layoutX="32.0" layoutY="13.0" pickOnBounds="true">
               <image>
-                <Image url="@img/microscope.png" preserveRatio="true" smooth="true" />
+                <Image preserveRatio="true" smooth="true" url="@img/microscope.png" />
               </image>
             </ImageView>
             <Label fx:id="consultationEnLigneLabel" font="$x1" layoutX="96.0" layoutY="20.0" onMouseClicked="#showConsultationEnLigneView" opacity="0.78" style="-fx-background-color : #333645;" text="Visite en ligne" textFill="WHITE" />
@@ -107,7 +107,7 @@
           <children>
             <ImageView id="home" fitHeight="39.0" fitWidth="38.0" layoutX="32.0" layoutY="13.0" pickOnBounds="true">
               <image>
-                <Image url="@img/mortar.png" preserveRatio="true" smooth="true" />
+                <Image preserveRatio="true" smooth="true" url="@img/mortar.png" />
               </image>
             </ImageView>
             <Label font="$x1" layoutX="96.0" layoutY="20.0" opacity="0.78" style="-fx-background-color : #333645;" text="Phytotherapie" textFill="WHITE" />

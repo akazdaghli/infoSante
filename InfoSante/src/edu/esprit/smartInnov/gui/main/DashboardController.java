@@ -25,7 +25,11 @@ public class DashboardController {
 		int nbrNewUsers = utilisateurService.getNbrNewUtilisateurs();
 		int nbrExp = experienceService.getNbrExperienceLastWeek();
 		int inscriAttente = utilisateurService.getNbrInscriEnAttente();
-		newUsersLabel.setText(nbrNewUsers + NEWUSERSLABEL);
+		if(nbrNewUsers != -1 && nbrNewUsers != 0) {
+			newUsersLabel.setText(nbrNewUsers + NEWUSERSLABEL);
+		}else {
+			newUsersLabel.setText("Aucun nouvels utilisateurs ");
+		}
 		experiencePartageesLabel.setText(nbrExp + EXPERERIENCELABEL);
 		usersQueueLabel.setText(inscriAttente + INSCRIENATTENTE);
 	}

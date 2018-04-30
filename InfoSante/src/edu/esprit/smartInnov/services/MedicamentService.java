@@ -177,6 +177,32 @@ public class MedicamentService {
 		return medicaments;
 	}
 	
+	public List<VMedicament> getListVMedicamentByMaladie(Maladie m){
+		LaboratoireService ls = new LaboratoireService();
+		List<VMedicament> meds = new ArrayList<>();
+		String searchQuery = "SELECT * FROM v_medicament WHERE id IN (SELECT idMedicament FROM medicament_maladie WHERE idMaladie = ?)";
+		try {
+			PreparedStatement ps = cnx.prepareStatement(searchQuery);
+			ps.setLong(1, m.getId());
+			LOGGER.log(Level.INFO, ps.toString());
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				VMedicament med = new VMedicament();
+				med.setId(rs.getLong(1));
+				med.setLibelle(rs.getString("libelle"));
+				med.setNotice(rs.getString("notice"));
+				med.setLabo(rs.getString("labo"));
+				med.setType(rs.getString("type"));
+				med.setApplication(rs.getString("application"));
+				meds.add(med);
+			}
+			LOGGER.log(java.util.logging.Level.INFO, meds.size() + " medicaments trouvés!!");
+		} catch (SQLException e) {
+			LOGGER.log(Level.SEVERE, e.getMessage());
+		}
+		return meds;
+	}
+	
 	public void deleteMedicament(Long id) {
 		String deleteQuery = "DELETE FROM Medicament_maladie WHERE idMedicament = ?";
 		String deleteQuery2 = " DELETE FROM Medicament WHERE id = ?";

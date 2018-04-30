@@ -177,6 +177,19 @@ public class UtilisateurService {
 		return true;
 	}
 	
+	public boolean isUtilisateurExistByMail(String mail) {
+		String searchQuery = "SELECT * FROM UTILISATEUR WHERE mail = ?";
+		LOGGER.log(Level.INFO, searchQuery);
+		try(PreparedStatement ps = cnx.prepareStatement(searchQuery)){
+			ps.setString(1, mail);
+			ResultSet rs = ps.executeQuery();
+			return new UtilisateurRowMapper(rs).getUtilisateurs().size() > 0;
+		} catch (SQLException e) {
+			LOGGER.log(Level.SEVERE, e.getMessage());
+		}
+		return true;
+	}
+	
 	
 	public void ajouter(Utilisateur user) {
 		String addProQuery = "INSERT INTO Utilisateur (nom, prenom, adresse, mail, numTel, dateCreation, flagActif, profil, login, pwd, idSpecialite, idLocal, photo) VALUES (?, ?, ?, ?,?,?,?,?,?,?, ?, ?, ?)";
@@ -285,6 +298,29 @@ public class UtilisateurService {
 			LOGGER.log(Level.SEVERE, e.getMessage());
 		}
 		return -1;
+	}
+	
+	public List<VProSante> getListProSanteEnAttente(){
+		String searchQuery = "SELECT * FROM v_pro_sante where flagActif = ?";
+		try (PreparedStatement ps = cnx.prepareStatement(searchQuery);){
+			ps.setBoolean(1, false);
+			LOGGER.log(Level.INFO, searchQuery.toString());
+			ResultSet rs = ps.executeQuery();
+			return new VProSanteRowMapper(rs).getVProSantes();
+		} catch (SQLException e) {
+			LOGGER.log(Level.SEVERE, e.getMessage());
+		}
+		return null;
+	}
+	
+	public void confirmerProSante(VProSante v) {
+		String query = "UPDATE Utilisateur SET flagActif = 1 WHERE id = "+v.getIdProSante();
+		LOGGER.log(Level.INFO, query);
+		try(Statement st = cnx.createStatement()) {
+			st.executeUpdate(query);
+		} catch (SQLException e) {
+			LOGGER.log(Level.SEVERE, e.getMessage());
+		}
 	}
 	
 }

@@ -44,6 +44,8 @@ public class Main extends Application {
 		primaryStage.show();
 	}
 	
+	
+	
 	public static void showAcceuilView(Utilisateur user) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		switch (user.getProfil()) {
@@ -57,13 +59,20 @@ public class Main extends Application {
 			loader.setLocation(Main.class.getResource("acceuilProSante.fxml"));
 			break;
 		}
-		
 		mainLayout = loader.load();
+		putAcceuilImg();
 		AcceuilController acceuilController = loader.getController();
 		acceuilController.initComponents(user);
 		Scene scene = new Scene(mainLayout);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+	}
+	
+	public static void putAcceuilImg() throws IOException {
+		FXMLLoader loader2 = new FXMLLoader();
+		loader2.setLocation(Main.class.getResource("acceuilImg.fxml"));
+		AnchorPane proSanteView = (AnchorPane) loader2.load();
+		getMainLayout().setCenter(proSanteView);
 	}
 	
 	public static void main(String[] args) throws Exception {

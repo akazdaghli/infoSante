@@ -41,6 +41,8 @@ public class AcceuilController {
 	@FXML
 	private Label produitLabel;
 	@FXML
+	private Label inscriEnAttenteLabel;
+	@FXML
 	private Label acceuilLabel;
 	@FXML
 	private Label activeViewLabel;
@@ -66,6 +68,8 @@ public class AcceuilController {
 	private AnchorPane produitMenuItem;
 	@FXML
 	private AnchorPane phytoMenuItem;
+	@FXML
+	private AnchorPane inscriEnAttenteMenuItem;
 	@FXML
 	private Circle imgShape;
 
@@ -98,6 +102,18 @@ public class AcceuilController {
 		Main.getMainLayout().setCenter(proSanteView);
 		resetBackgroundColorMenuItems();
 		setMenuItemStyle(proSanteMenuItem, proSanteLabel);
+	}
+	
+	public void showInscriEnAttenteView() throws IOException {
+		activeViewLabel.setText("Inscription en attente");
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("inscriEnAttenteView.fxml"));
+		AnchorPane proSanteView = (AnchorPane) loader.load();
+		InscriEnAttenteController inscriEnAttenteController = loader.getController();
+		inscriEnAttenteController.initComponents();
+		Main.getMainLayout().setCenter(proSanteView);
+		resetBackgroundColorMenuItems();
+		setMenuItemStyle(inscriEnAttenteMenuItem, inscriEnAttenteLabel);
 	}
 
 	public void showMedicamentsView() throws IOException {
@@ -215,6 +231,10 @@ public class AcceuilController {
 		if (phytoMenuItem != null) {
 			phytoLabel.setStyle(defaultStyle);
 			phytoMenuItem.setStyle(defaultStyle);
+		}
+		if(inscriEnAttenteMenuItem != null) {
+			inscriEnAttenteMenuItem.setStyle(defaultStyle);
+			inscriEnAttenteLabel.setStyle(defaultStyle);
 		}
 	}
 

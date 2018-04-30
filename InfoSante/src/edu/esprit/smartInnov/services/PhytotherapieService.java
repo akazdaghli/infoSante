@@ -88,10 +88,10 @@ public class PhytotherapieService implements Serializable {
 	
 	public List<Phytotherapie> getListPhytotherapieByMaladie(Maladie m){
 		List<Phytotherapie> phytos = new ArrayList<>();
-		String searchQuery = "SELECT * FROM Phytotherapie WHERE id in(SELECT idPhytotherapie FROM maladie_phytotherapie WHERE idMaladie = ?)";
+		String searchQuery = "SELECT * FROM Phytotherapie WHERE id in(SELECT idPhytotherapie FROM maladie_phytotherapie WHERE idMaladie = "+m.getId()+" )";
 		
 		try(PreparedStatement ps = cnx.prepareStatement(searchQuery);) {
-			ps.setLong(1, m.getId());
+//			ps.setLong(1, m.getId());
 			LOGGER.log(Level.INFO,ps.toString());
 			ResultSet rs = ps.executeQuery(searchQuery);
 			while(rs.next()) {

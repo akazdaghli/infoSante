@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="483.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.smartInnov.gui.main.ConsultationEnLigneController">
    <children>
-      <CheckListView fx:id="symptomesCheckList" prefHeight="424.0" prefWidth="248.0" />
+      <CheckListView fx:id="symptomesCheckList" layoutY="34.0" prefHeight="390.0" prefWidth="248.0" />
       <Button layoutX="165.0" layoutY="438.0" mnemonicParsing="false" onMouseClicked="#validerListSymptomes" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #00A2D3; -fx-cursor: hand; -fx-background-radius: 1em;" text="Valider" textFill="#fffdfd">
          <font>
             <Font name="Ebrima Bold" size="12.0" />
@@ -26,5 +26,6 @@
          </graphic>
       </Button>
       <PieChart fx:id="pourcentageChart" layoutX="248.0" prefHeight="424.0" prefWidth="500.0" />
+      <TextField fx:id="filtreText" layoutX="-1.0" layoutY="9.0" onKeyReleased="#filtrerListView" prefHeight="25.0" prefWidth="248.0" promptText="Filtre.." />
    </children>
 </AnchorPane>

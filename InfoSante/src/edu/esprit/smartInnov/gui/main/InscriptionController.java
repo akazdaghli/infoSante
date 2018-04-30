@@ -92,6 +92,7 @@ public class InscriptionController {
 	ProSante userPro;
 	
 	public void initComponents() {
+		utilisateurService = new UtilisateurService();
 		final ToggleGroup group = new ToggleGroup();
 		isPro.setToggleGroup(group);
 		isParticulier.setToggleGroup(group);
@@ -149,7 +150,6 @@ public class InscriptionController {
 	
 	public void ajouterUtilisateur() {
 		Utilisateur user = new Patient();
-		user.setFlagActif(true);
 		user.setDateCreation(new Date(Calendar.getInstance().getTimeInMillis()));
 		if(photo != null) {
 			user.setPhoto(photo);
@@ -176,7 +176,16 @@ public class InscriptionController {
 		}
 		user.setAdresse(adresseField.getText());
 		if(Utilitaire.isValidMail(mailField.getText())) {
-			user.setMail(mailField.getText());
+			if(!checkUserMail(mailField.getText())){
+				user.setMail(mailField.getText());
+			}else {
+				alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Erreur");
+				alert.setHeaderText("Erreur lors de la validation du mail");
+				alert.setContentText("L'adresse mail entrée est utilisée par unautre utilisateur! ");
+				alert.showAndWait();
+				return;
+			}
 		}else {
 			alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Erreur");
@@ -269,6 +278,7 @@ public class InscriptionController {
 			};
 			clearAll();
 		}else {
+			user.setFlagActif(true);
 			utilisateurService.ajouter(user);
 			alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Succès");
@@ -291,7 +301,7 @@ public class InscriptionController {
 		utilisateurService = new UtilisateurService();
 		Utilisateur user = utilisateurService.getUserByLogin(loginTextField.getText());
 		if(user != null ) {
-			if(Utilitaire.verifyHashedPassword(user.getPwd(), Utilitaire.hashMD5Crypt(pwdTextField.getText()))) {
+			if(Utilitaire.verifyHashedPassword(user.getPwd(), Utilitaire.hashMD5Crypt(pwdTextField.getText())) && user.getFlagActif()) {
 //				alert = new Alert(AlertType.INFORMATION);
 //				alert.setTitle("Success");
 //				alert.setHeaderText("Login success");
@@ -336,8 +346,12 @@ public class InscriptionController {
 	}
 	
 	public boolean checkUserLogin(String login) {
-		utilisateurService = new UtilisateurService();
 		return utilisateurService.isUtilisateurExistByLogin(login);
+	}
+	
+	public boolean checkUserMail(String mail) {
+		return utilisateurService.isUtilisateurExistByMail(mail);
+		
 	}
 	
 	private void navigateToAcceuilPage(Utilisateur userConnected) throws IOException {

@@ -21,6 +21,7 @@ public class VProSanteRowMapper {
 					v.setNom(rs.getString("nom"));
 					v.setPrenom(rs.getString("prenom"));
 					v.setLibelle(rs.getString("libelle"));
+					v.setMail(rs.getString("mail"));
 					v.setNumTel(rs.getString("numTel"));
 					pros.add(v);
 				}
