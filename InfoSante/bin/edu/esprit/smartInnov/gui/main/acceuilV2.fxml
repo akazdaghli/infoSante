@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.shape.*?>
 <?import java.lang.*?>
@@ -64,14 +65,14 @@
             <Label fx:id="produitLabel" font="$x1" layoutX="96.0" layoutY="20.0" onMouseClicked="#showProduitView" opacity="0.78" style="-fx-background-color : #333645;" text="Produits" textFill="WHITE" />
           </children>
         </AnchorPane>
-        <AnchorPane id="AnchorPane" mouseTransparent="false" prefHeight="66.0" prefWidth="300.0" style="-fx-cursor: hand;">
+        <AnchorPane id="AnchorPane" fx:id="rvMenuItem" mouseTransparent="false" onMouseClicked="#showRendezVousView" prefHeight="66.0" prefWidth="300.0" style="-fx-cursor: hand;">
           <children>
             <ImageView id="home" fitHeight="39.0" fitWidth="38.0" layoutX="32.0" layoutY="13.0" pickOnBounds="true">
               <image>
                 <Image preserveRatio="true" smooth="true" url="@img/heart-rate.png" />
               </image>
             </ImageView>
-            <Label font="$x1" layoutX="96.0" layoutY="20.0" opacity="0.78" pickOnBounds="false" style="-fx-background-color : #333645;" text="Rendez-vous" textFill="WHITE" />
+            <Label fx:id="rendezVousLabel" font="$x1" layoutX="96.0" layoutY="20.0" opacity="0.78" pickOnBounds="false" style="-fx-background-color : #333645;" text="Rendez-vous" textFill="WHITE" />
           </children>
         </AnchorPane>
         <AnchorPane id="AnchorPane" fx:id="medicamentMenuItem" mouseTransparent="false" onMouseClicked="#showMedicamentsView" prefHeight="66.0" prefWidth="300.0" style="-fx-cursor: hand;">
@@ -104,15 +105,21 @@
             <Label fx:id="phytoLabel" font="$x1" layoutX="96.0" layoutY="20.0" onMouseClicked="#showPhytotherapieView" opacity="0.78" style="-fx-background-color : #333645;" text="Phytotherapie" textFill="WHITE" />
           </children>
         </AnchorPane>
-            <AnchorPane prefHeight="66.0" prefWidth="300.0">
+            <AnchorPane fx:id="expMenuItem" onMouseClicked="#showExperienceView" prefHeight="66.0" prefWidth="300.0">
                <children>
-                  <Label fx:id="phytoLabel1" font="$x1" layoutX="96.0" layoutY="20.0" onMouseClicked="#showPhytotherapieView" opacity="0.78" style="-fx-background-color : #333645;" text="Expérience" textFill="WHITE" />
+                  <Label fx:id="expLabel" font="$x1" layoutX="96.0" layoutY="20.0" onMouseClicked="#showExperienceView" opacity="0.78" style="-fx-background-color : #333645;" text="Expérience" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Label>
                   <ImageView id="home" fitHeight="39.0" fitWidth="38.0" layoutX="32.0" layoutY="13.0" pickOnBounds="true">
                      <image>
                         <Image url="@../../../../../../../../../Desktop/MedIt/InfoSante/src/edu/esprit/smartInnov/gui/main/img/networking.png" />
                      </image>
                   </ImageView>
                </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </AnchorPane>
       </children>
     </VBox>

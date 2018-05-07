@@ -1,6 +1,7 @@
 package edu.esprit.smartInnov.entites;
 
-import java.util.Date;
+import java.io.InputStream;
+import java.sql.Date;
 
 public class Experience {
 
@@ -8,18 +9,23 @@ public class Experience {
 	private Utilisateur utilisateur;
 	private String titre;
 	private String detail;
+	private int nbrVues;
+	private boolean flagVisible;
 	private Date datePartage;
+	private InputStream photo;
 	
 	public Experience() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Experience(Utilisateur utilisateur, String titre, String detail, Date datePartage) {
+	public Experience(Utilisateur utilisateur, String titre, String detail, Date datePartage, int nbrVues, InputStream photo) {
 		super();
 		this.utilisateur = utilisateur;
 		this.titre = titre;
 		this.detail = detail;
 		this.datePartage = datePartage;
+		this.nbrVues = nbrVues;
+		this.photo = photo;
 	}
 
 	public Long getId() {
@@ -53,6 +59,22 @@ public class Experience {
 	public void setDetail(String detail) {
 		this.detail = detail;
 	}
+	
+	public int getNbrVues() {
+		return nbrVues;
+	}
+
+	public void setNbrVues(int nbrVues) {
+		this.nbrVues = nbrVues;
+	}
+
+	public boolean isFlagVisible() {
+		return flagVisible;
+	}
+
+	public void setFlagVisible(boolean flagVisible) {
+		this.flagVisible = flagVisible;
+	}
 
 	public Date getDatePartage() {
 		return datePartage;
@@ -60,6 +82,14 @@ public class Experience {
 
 	public void setDatePartage(Date datePartage) {
 		this.datePartage = datePartage;
+	}
+
+	public InputStream getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(InputStream photo) {
+		this.photo = photo;
 	}
 	
 	

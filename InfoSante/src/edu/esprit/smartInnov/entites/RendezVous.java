@@ -1,7 +1,7 @@
 package edu.esprit.smartInnov.entites;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 public class RendezVous implements Serializable{
 
@@ -9,6 +9,9 @@ public class RendezVous implements Serializable{
 	private ProSante medecin;
 	private Patient patient;
 	private Date dateRendezVs;
+	private String heureRendezVs;
+	private String sujet;
+	private boolean flagValide;
 	
 	public RendezVous() {
 		// TODO Auto-generated constructor stub
@@ -43,6 +46,30 @@ public class RendezVous implements Serializable{
 
 	public void setDateRendezVs(Date dateRendezVs) {
 		this.dateRendezVs = dateRendezVs;
+	}
+
+	public String getHeureRendezVs() {
+		return heureRendezVs;
+	}
+
+	public void setHeureRendezVs(String heureRendezVs) {
+		this.heureRendezVs = heureRendezVs;
+	}
+
+	public String getSujet() {
+		return sujet;
+	}
+
+	public void setSujet(String sujet) {
+		this.sujet = sujet;
+	}
+
+	public boolean isFlagValide() {
+		return flagValide;
+	}
+
+	public void setFlagValide(boolean flagValide) {
+		this.flagValide = flagValide;
 	}
 	
 	

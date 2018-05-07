@@ -21,6 +21,19 @@ public class AvisService {
 		cnx = ConnectionManager.getInstance().getCnx();
 	}
 	
+	public void changeAvis(double newRate, Long idProduit, Long idUser) {
+		String updateQuery = "UPDATE avis set rate = ? WHERE idProduit = ? AND idUtilisateur = ?";
+		try (PreparedStatement ps= cnx.prepareStatement(updateQuery);){
+			ps.setInt(1, (int)newRate);
+			ps.setLong(2, idProduit);
+			ps.setLong(3, idUser);
+			LOGGER.log(Level.INFO, ps.toString());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			LOGGER.log(Level.SEVERE, e.getMessage());
+		}
+	}
+	
 	public void ajouter(Avis avis) {
 		String addQuery = "INSERT INTO avis (rate, dateRate, idUtilisateur, idProduit) VALUES (?, ?, ?, ?)";
 		try (PreparedStatement ps = cnx.prepareStatement(addQuery);){
@@ -35,7 +48,7 @@ public class AvisService {
 		}
 	}
 	
-	public Avis getAvisByProduitAndUser(Produit p, Utilisateur user) {
+	public Avis getAvisByProduitAndUser(VProduit p, Utilisateur user) {
 		String searchQuery = "SELECT * FROM avis WHERE idUtilisateur = ? AND idProduit = ?";
 		try (PreparedStatement ps = cnx.prepareStatement(searchQuery);){
 			ps.setLong(1,user.getId());

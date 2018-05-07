@@ -33,18 +33,18 @@ public class NoticeModalController {
 	
 	public void exportNoticeToPdf() throws Exception {
 		LOGGER.log(Level.INFO, "Exporting notice to pdf ...");
-		File template = new File(getClass().getResource("img/notice.doc").toURI());
-		Document doc = new Document(template.getPath());
-		DocumentBuilder db = new DocumentBuilder(doc);
-		if(vMed != null) {
-			if(vMed.getLibelle() != null && !vMed.getLibelle().isEmpty()) {
-				doc.getRange().replace("@libelle", vMed.getLibelle(), true, false);
-			}
-		}
-		String userDir = System.getProperty("user.dir");
-
-		String fileName = "Notice : " + vMed.getLibelle()+".pdf";
-		doc.save(userDir+File.separator+fileName, com.aspose.words.SaveFormat.PDF);
+//		File template = new File(getClass().getResource("img/notice.doc").toURI());
+//		Document doc = new Document(template.getPath());
+//		DocumentBuilder db = new DocumentBuilder(doc);
+//		if(vMed != null) {
+//			if(vMed.getLibelle() != null && !vMed.getLibelle().isEmpty()) {
+//				doc.getRange().replace("@libelle", vMed.getLibelle(), true, false);
+//			}
+//		}
+//		String userDir = System.getProperty("user.dir");
+//
+//		String fileName = "Notice : " + vMed.getLibelle()+".pdf";
+//		doc.save(userDir+File.separator+fileName, com.aspose.words.SaveFormat.PDF);
 
 	}
 }

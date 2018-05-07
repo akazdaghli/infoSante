@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="483.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.smartInnov.gui.main.ExperienceController">
+   <children>
+      <TableView fx:id="allExperiencesTable" layoutY="71.0" prefHeight="378.0" prefWidth="718.0">
+         <columns>
+            <TableColumn fx:id="userCol" prefWidth="144.8" text="Utilisateur" />
+            <TableColumn fx:id="titreCol" prefWidth="144.8" text="Titre" />
+            <TableColumn fx:id="dateCol" prefWidth="144.8" text="Date" />
+            <TableColumn fx:id="nbrCommCol" prefWidth="144.8" text="Commentaires" />
+            <TableColumn fx:id="nbrVuesCol" prefWidth="144.8" text="Vues" />
+         </columns>
+      </TableView>
+      <Label layoutX="55.0" layoutY="23.0" text="Afficher" />
+      <RadioButton fx:id="toutesExp" layoutX="113.0" layoutY="23.0" mnemonicParsing="false" onAction="#changeData" text="Toutes les expériences" />
+      <RadioButton fx:id="userExp" layoutX="266.0" layoutY="23.0" mnemonicParsing="false" onAction="#changeData" text="Mes expériences" />
+      <Button layoutX="614.0" layoutY="40.0" mnemonicParsing="false" onMouseClicked="#showAjouterExperienceView" style="-fx-background-color: #00A2D3; -fx-background-radius: 5em;" text="Ajouter" textFill="#fffefe">
+         <graphic>
+            <ImageView fitHeight="18.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../Desktop/MedIt/InfoSante/src/edu/esprit/smartInnov/gui/main/img/plus.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Ebrima Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+   </children>
+</AnchorPane>

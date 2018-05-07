@@ -10,6 +10,11 @@
 	-fx-backgtound-radius : 5em;
 }
 
+.button:hover{
+    -fx-background-color: #929292;
+    -fx-text-fill: white;
+}
+
 .label{
 	-fx-background-color:transparent;
 }

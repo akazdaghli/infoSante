@@ -263,6 +263,7 @@ public class InscriptionController {
 	
 		utilisateurService = new UtilisateurService();
 		if(isPro.isSelected()) {
+			userPro.setFlagActif(false);
 			utilisateurService.ajouter(userPro);
 			alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Succès");

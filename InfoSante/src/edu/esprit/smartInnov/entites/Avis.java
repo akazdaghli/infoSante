@@ -3,6 +3,8 @@ package edu.esprit.smartInnov.entites;
 import java.io.Serializable;
 import java.sql.Date;
 
+import edu.esprit.smartInnov.vues.VProduit;
+
 public class Avis implements Serializable {
 	
 	/**
@@ -12,7 +14,7 @@ public class Avis implements Serializable {
 	private Long id;
 	private int rate;
 	private Date dateAvis;
-	private Produit produit;
+	private VProduit produit;
 	private Utilisateur utilisateur;
 	
 	public Avis() {
@@ -43,11 +45,11 @@ public class Avis implements Serializable {
 		this.dateAvis = dateAvis;
 	}
 
-	public Produit getProduit() {
+	public VProduit getProduit() {
 		return produit;
 	}
 
-	public void setProduit(Produit produit) {
+	public void setProduit(VProduit produit) {
 		this.produit = produit;
 	}
 

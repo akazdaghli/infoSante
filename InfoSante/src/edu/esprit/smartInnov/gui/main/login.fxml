@@ -39,28 +39,28 @@
         <AnchorPane layoutX="35.0" layoutY="22.0" opacity="0.7" prefHeight="564.0" prefWidth="449.0" style="-fx-background-color:#00A2D3;&#10;-fx-background-radius: 1em; ">
           <children>
             <Label layoutX="40.0" layoutY="30.0" text="Nom:" />
-            <Label layoutX="40.0" layoutY="55.0" text="Prénom:" />
-            <Label layoutX="40.0" layoutY="80.0" text="Mail:" />
-            <Label layoutX="40.0" layoutY="105.0" text="Télephone:" />
-            <Label layoutX="40.0" layoutY="130.0" text="Adresse:" />
-            <Label layoutX="40.0" layoutY="155.0" text="Login:" />
-            <Label layoutX="40.0" layoutY="180.0" text="Mot de passe:" />
-            <Label layoutX="40.0" layoutY="205.0" text="Confirmer mot de passe:" />
-            <Label layoutX="40.0" layoutY="255.0" text="Vous etes:" />
-            <RadioButton fx:id="isParticulier" layoutX="129.0" layoutY="255.0" mnemonicParsing="false" onAction="#changeVisibility" text="Particulier" />
-            <RadioButton fx:id="isPro" layoutX="267.0" layoutY="255.0" mnemonicParsing="false" onAction="#changeVisibility" text="Professionnel de santé" />
-            <Label fx:id="specialiteLabel" layoutX="40.0" layoutY="280.0" text="Spécialité:" />
-            <Label fx:id="adresseLocalLabel" layoutX="43.0" layoutY="305.0" text="Adresse:" />
-            <TextField fx:id="nomField" layoutX="201.0" layoutY="30.0" prefWidth="200.0" style="-fx-background-radius: 1em;" />
-            <TextField fx:id="prenomField" layoutX="201.0" layoutY="55.0" prefWidth="200.0" style="-fx-background-radius: 1em;" />
-            <TextField fx:id="mailField" layoutX="201.0" layoutY="80.0" prefWidth="200.0" style="-fx-background-radius: 1em;" />
-            <TextField fx:id="numTelField" layoutX="201.0" layoutY="105.0" prefWidth="200.0" style="-fx-background-radius: 1em;" />
-            <TextField fx:id="adresseLocal" layoutX="201.0" layoutY="305.0" prefWidth="200.0" style="-fx-background-radius: 1em;" />
-            <TextField fx:id="adresseField" layoutX="201.0" layoutY="130.0" prefWidth="200.0" style="-fx-background-radius: 1em;" />
-            <TextField fx:id="loginField" layoutX="201.0" layoutY="155.0" prefWidth="200.0" style="-fx-background-radius: 1em;" />
-            <PasswordField fx:id="pwdField" layoutX="201.0" layoutY="180.0" prefWidth="200.0" style="-fx-background-radius: 1em;" />
-            <PasswordField fx:id="ConfirmPwdField" layoutX="201.0" layoutY="205.0" prefWidth="200.0" style="-fx-background-radius: 1em;" />
-            <ComboBox fx:id="specialites" layoutX="201.0" layoutY="280.0" prefHeight="21.0" prefWidth="200.0" style="-fx-background-radius: 1em;">
+            <Label layoutX="40.0" layoutY="65.0" text="Prénom:" />
+            <Label layoutX="40.0" layoutY="100.0" text="Mail:" />
+            <Label layoutX="40.0" layoutY="135.0" text="Télephone:" />
+            <Label layoutX="40.0" layoutY="170.0" text="Adresse:" />
+            <Label layoutX="40.0" layoutY="205.0" text="Login:" />
+            <Label layoutX="40.0" layoutY="240.0" text="Mot de passe:" />
+            <Label layoutX="40.0" layoutY="275.0" text="Confirmer mot de passe:" />
+            <Label layoutX="40.0" layoutY="345.0" text="Vous etes:" />
+            <RadioButton fx:id="isParticulier" layoutX="129.0" layoutY="345.0" mnemonicParsing="false" onAction="#changeVisibility" text="Particulier" />
+            <RadioButton fx:id="isPro" layoutX="267.0" layoutY="345.0" mnemonicParsing="false" onAction="#changeVisibility" text="Professionnel de santé" />
+            <Label fx:id="specialiteLabel" layoutX="40.0" layoutY="380.0" text="Spécialité:" />
+            <Label fx:id="adresseLocalLabel" layoutX="43.0" layoutY="415.0" text="Adresse:" />
+            <TextField fx:id="nomField" layoutX="201.0" layoutY="30.0" prefWidth="200.0" promptText="Votre nom ..." style="-fx-background-radius: 1em;" />
+            <TextField fx:id="prenomField" layoutX="201.0" layoutY="65.0" prefWidth="200.0" promptText="Votre prénom ..." style="-fx-background-radius: 1em;" />
+            <TextField fx:id="mailField" layoutX="201.0" layoutY="100.0" prefWidth="200.0" promptText="Votre adresse mail ..." style="-fx-background-radius: 1em;" />
+            <TextField fx:id="numTelField" layoutX="201.0" layoutY="135.0" prefWidth="200.0" promptText="Votre numéro de téléphone ..." style="-fx-background-radius: 1em;" />
+            <TextField fx:id="adresseLocal" layoutX="201.0" layoutY="415.0" prefWidth="200.0" promptText="Adresse de votre cabinet ..." style="-fx-background-radius: 1em;" />
+            <TextField fx:id="adresseField" layoutX="201.0" layoutY="170.0" prefWidth="200.0" promptText="Votre adresse ..." style="-fx-background-radius: 1em;" />
+            <TextField fx:id="loginField" layoutX="201.0" layoutY="205.0" prefWidth="200.0" promptText="Votre nom d'utilisateur ..." style="-fx-background-radius: 1em;" />
+            <PasswordField fx:id="pwdField" layoutX="201.0" layoutY="240.0" prefWidth="200.0" promptText="Votre mot de passe ..." style="-fx-background-radius: 1em;" />
+            <PasswordField fx:id="ConfirmPwdField" layoutX="201.0" layoutY="275.0" prefWidth="200.0" promptText="Confirmer le mot de passe choisi ..." style="-fx-background-radius: 1em;" />
+            <ComboBox fx:id="specialites" layoutX="201.0" layoutY="380.0" prefHeight="21.0" prefWidth="200.0" style="-fx-background-radius: 1em;">
               <items>
                 <FXCollections fx:factory="observableArrayList">
                   <String fx:value="Item 1" />
@@ -69,9 +69,9 @@
                 </FXCollections>
               </items>
             </ComboBox>
-            <Button font="$x3" layoutX="129.0" layoutY="344.0" mnemonicParsing="false" onAction="#ajouterUtilisateur" prefHeight="49.0" prefWidth="145.0" style="-fx-background-color:#333645;&#10;-fx-background-radius: 5em; &#10;-fx-cursor: hand;" text="S'inscrire" textFill="$x4" />
-                  <Label layoutX="40.0" layoutY="230.0" text="Photo:" />
-                  <TextField fx:id="imageUpload" layoutX="201.0" layoutY="230.0" onAction="#importImage" onMouseClicked="#importImage" prefWidth="200.0" style="-fx-background-radius: 1em;" />
+            <Button font="$x3" layoutX="129.0" layoutY="450.0" mnemonicParsing="false" onAction="#ajouterUtilisateur" prefHeight="49.0" prefWidth="145.0" style="-fx-background-color:#333645;&#10;-fx-background-radius: 5em; &#10;-fx-cursor: hand;" text="S'inscrire" textFill="$x4" />
+                  <Label layoutX="40.0" layoutY="310.0" text="Photo:" />
+                  <TextField fx:id="imageUpload" layoutX="201.0" layoutY="310.0" onAction="#importImage" onMouseClicked="#importImage" prefWidth="200.0" promptText="Clicker pour choisir une photo ..." style="-fx-background-radius: 1em;" />
           </children>
         </AnchorPane>
       </children>

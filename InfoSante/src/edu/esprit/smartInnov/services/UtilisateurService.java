@@ -170,7 +170,7 @@ public class UtilisateurService {
 		try(PreparedStatement ps = cnx.prepareStatement(searchQuery)){
 			ps.setString(1, login);
 			ResultSet rs = ps.executeQuery();
-			return new UtilisateurRowMapper(rs).getUtilisateurs().size() > 0;
+			return rs.next();
 		} catch (SQLException e) {
 			LOGGER.log(Level.SEVERE, e.getMessage());
 		}
@@ -179,11 +179,11 @@ public class UtilisateurService {
 	
 	public boolean isUtilisateurExistByMail(String mail) {
 		String searchQuery = "SELECT * FROM UTILISATEUR WHERE mail = ?";
-		LOGGER.log(Level.INFO, searchQuery);
 		try(PreparedStatement ps = cnx.prepareStatement(searchQuery)){
 			ps.setString(1, mail);
+			LOGGER.log(Level.INFO, ps.toString());
 			ResultSet rs = ps.executeQuery();
-			return new UtilisateurRowMapper(rs).getUtilisateurs().size() > 0;
+			return rs.next();
 		} catch (SQLException e) {
 			LOGGER.log(Level.SEVERE, e.getMessage());
 		}

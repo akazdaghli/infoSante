@@ -43,9 +43,13 @@ public class AcceuilController {
 	@FXML
 	private Label inscriEnAttenteLabel;
 	@FXML
+	private Label rendezVousLabel;
+	@FXML
 	private Label acceuilLabel;
 	@FXML
 	private Label activeViewLabel;
+	@FXML
+	private Label expLabel;
 	@FXML
 	private ImageView logoutImg;
 	@FXML
@@ -68,6 +72,10 @@ public class AcceuilController {
 	private AnchorPane produitMenuItem;
 	@FXML
 	private AnchorPane phytoMenuItem;
+	@FXML
+	private AnchorPane expMenuItem;
+	@FXML
+	private AnchorPane rvMenuItem;
 	@FXML
 	private AnchorPane inscriEnAttenteMenuItem;
 	@FXML
@@ -185,6 +193,18 @@ public class AcceuilController {
 		resetBackgroundColorMenuItems();
 		setMenuItemStyle(dashboardMenuItem, dashboardLabel);
 	}
+	
+	public void showExperienceView() throws IOException {
+		activeViewLabel.setText("Expériences");
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("experienceView.fxml"));
+		AnchorPane experienceView = (AnchorPane) loader.load();
+		ExperienceController experienceController = loader.getController();
+		experienceController.initComponents(userConnected);
+		Main.getMainLayout().setCenter(experienceView);
+		resetBackgroundColorMenuItems();
+		setMenuItemStyle(expMenuItem, expLabel);
+	}
 
 	public void showSendMailView() throws IOException {
 		activeViewLabel.setText("Envoyer un mail");
@@ -196,6 +216,18 @@ public class AcceuilController {
 		Main.getMainLayout().setCenter(sendMail);
 		resetBackgroundColorMenuItems();
 		setMenuItemStyle(sendMailMenuItem, sendMailLabel);
+	}
+	
+	public void showRendezVousView() throws IOException {
+		activeViewLabel.setText("Rendez-vous");
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("rendezvousView.fxml"));
+		AnchorPane view = (AnchorPane) loader.load();
+		RendezvousController ctrl = loader.getController();
+		ctrl.initComponents();
+		Main.getMainLayout().setCenter(view);
+		resetBackgroundColorMenuItems();
+		setMenuItemStyle(rvMenuItem, rendezVousLabel);
 	}
 
 	public void resetBackgroundColorMenuItems() {
@@ -235,6 +267,14 @@ public class AcceuilController {
 		if(inscriEnAttenteMenuItem != null) {
 			inscriEnAttenteMenuItem.setStyle(defaultStyle);
 			inscriEnAttenteLabel.setStyle(defaultStyle);
+		}
+		if(expMenuItem != null) {
+			expMenuItem.setStyle(defaultStyle);
+			expLabel.setStyle(defaultStyle);
+		}
+		if(rvMenuItem != null) {
+			rvMenuItem.setStyle(defaultStyle);
+			rendezVousLabel.setStyle(defaultStyle);
 		}
 	}
 

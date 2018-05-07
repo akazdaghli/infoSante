@@ -3,7 +3,7 @@ package edu.esprit.smartInnov.gui.main;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
-
+import java.util.logging.Logger;
 
 import edu.esprit.smartInnov.entites.Laboratoire;
 import edu.esprit.smartInnov.entites.Utilisateur;
@@ -36,6 +36,7 @@ import javafx.util.Callback;
 
 public class ProduitController {
 
+	private static final Logger LOGGER = Logger.getLogger(ProduitController.class.getName());
 	private List<VProduit> produits;
 	private ProduitService produitService;
 	private LaboratoireService laboratoireService;
@@ -166,6 +167,47 @@ public class ProduitController {
 			};
 			actionCol.setCellFactory(cellFactory);
 		}
+		if(userConnected.getProfil().equals(IConstants.Profils.PATIENT)) {
+			Callback<TableColumn<VProduit, String>, TableCell<VProduit, String>> cellFactory =
+					new Callback<TableColumn<VProduit, String>, TableCell<VProduit, String>>(){
+
+						@Override
+						public TableCell<VProduit, String> call(TableColumn<VProduit, String> param) {
+							final TableCell<VProduit, String> cell = new TableCell<VProduit, String>(){
+								final Button noter = new Button("Noter");
+								@Override
+								public void updateItem(String item, boolean empty) {
+									super.updateItem(item, empty);
+									if(empty) {
+										setGraphic(null);
+										setText(null);
+									}else {
+										String btnStyle= "-fx-background-color:#00A2D3;\r\n" + 
+												"-fx-background-radius: 5em; \r\n" + 
+												"-fx-text-fill: white; \r\n" + 
+												"-fx-cursor: hand;";
+										noter.setStyle(btnStyle);
+										noter.setOnMouseClicked(event ->{
+											VProduit p = getTableView().getItems().get(getIndex());
+											LOGGER.info("noting "+p.getLibelle()+"...");
+											try {
+												showNoterProduitModal(event, p);
+											} catch (IOException e) {
+												LOGGER.severe(e.getMessage());
+											}
+										});
+										setGraphic(noter);
+										setText(null);
+										
+									}
+								}
+							};
+							return cell;
+						}
+				
+			};
+			actionCol.setCellFactory(cellFactory);
+		}
 		produitTable.setItems(data);
 	}
 	
@@ -195,6 +237,20 @@ public class ProduitController {
 	    stage.initModality(Modality.WINDOW_MODAL);
 	    stage.initOwner(((Node)event.getSource()).getScene().getWindow() );
 	    ctrl.initComponents();
+	    stage.show();
+	}
+	
+	public void showNoterProduitModal(MouseEvent event, VProduit p) throws IOException {
+	    stage = new Stage();
+	    FXMLLoader loader = new FXMLLoader();
+	    loader.setLocation(Main.class.getResource("noterProduitModal.fxml"));
+	    Parent root = loader.load();
+	    NoterProduitController ctrl = loader.getController();
+	    stage.setScene(new Scene(root));
+	    stage.setTitle("Noter Produit");
+	    stage.initModality(Modality.WINDOW_MODAL);
+	    stage.initOwner(((Node)event.getSource()).getScene().getWindow() );
+	    ctrl.initComponents(p);
 	    stage.show();
 	}
 	

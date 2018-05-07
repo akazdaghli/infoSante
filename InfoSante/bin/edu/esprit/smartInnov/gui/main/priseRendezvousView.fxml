@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.smartInnov.gui.main.PriseRendezVousController">
+   <children>
+      <Label layoutX="192.0" layoutY="14.0" text="Demande de rendez-vous">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="45.0" layoutY="101.0" text="Docteur :" />
+      <Label layoutX="330.0" layoutY="101.0" text="Patient:" />
+      <Label layoutX="45.0" layoutY="176.0" text="Date:" />
+      <DatePicker fx:id="date" layoutX="105.0" layoutY="172.0" />
+      <Label layoutX="332.0" layoutY="176.0" text="Heure:" />
+      <ComboBox fx:id="heure" layoutX="400.0" layoutY="172.0" prefWidth="150.0" style="-fx-background-radius: 5em;" />
+      <Label fx:id="patient" layoutX="386.0" layoutY="101.0" text="Label" />
+      <Label fx:id="docteur" layoutX="105.0" layoutY="101.0" text="Label" />
+      <Label layoutX="45.0" layoutY="239.0" text="Sujet :" />
+      <TextArea fx:id="sujet" layoutX="103.0" layoutY="239.0" prefHeight="163.0" prefWidth="450.0" style="-fx-background-radius: 1em;" />
+      <Button layoutX="501.0" layoutY="415.0" mnemonicParsing="false" onMouseClicked="#valider" style="-fx-background-radius: 5em; -fx-background-color: #00A2D3;" text="Valider" textFill="#f8f7f7">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Ebrima Bold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="18.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../Desktop/MedIt/InfoSante/src/edu/esprit/smartInnov/gui/main/img/tick-inside-circle.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+   </children>
+</AnchorPane>

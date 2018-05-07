@@ -23,6 +23,7 @@ public class Main extends Application {
 	private static Stage primaryStage;
 	private static BorderPane mainLayout;
 	private static BorderPane login;
+	private static Utilisateur userConnected;
 //	private InscriptionController inscriptionController;
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -47,6 +48,7 @@ public class Main extends Application {
 	
 	
 	public static void showAcceuilView(Utilisateur user) throws IOException {
+		userConnected = user;
 		FXMLLoader loader = new FXMLLoader();
 		switch (user.getProfil()) {
 		case IConstants.Profils.PATIENT:
@@ -94,5 +96,13 @@ public class Main extends Application {
 
 	public static void setMainLayout(BorderPane mainLayout) {
 		Main.mainLayout = mainLayout;
+	}
+
+	public static Utilisateur getUserConnected() {
+		return userConnected;
+	}
+
+	public static void setUserConnected(Utilisateur userConnected) {
+		Main.userConnected = userConnected;
 	}
 }

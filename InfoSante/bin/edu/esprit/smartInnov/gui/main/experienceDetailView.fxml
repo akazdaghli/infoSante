@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="483.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.smartInnov.gui.main.ExperienceDetailController">
+   <children>
+      <ImageView fx:id="image" fitHeight="189.0" fitWidth="208.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="titre" layoutX="251.0" layoutY="22.0" text="Label">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="251.0" layoutY="49.0" text="Partagée le :" />
+      <Label layoutX="252.0" layoutY="75.0" text="Par :" />
+      <Label fx:id="user" layoutX="277.0" layoutY="76.0" text="Label" />
+      <Label fx:id="datePartage" layoutX="321.0" layoutY="50.0" text="Label" />
+      <ScrollPane layoutX="249.0" layoutY="103.0" prefViewportHeight="208.0" prefViewportWidth="448.0">
+         <content>
+            <TextFlow fx:id="detail" layoutX="249.0" layoutY="103.0" prefHeight="208.0" prefWidth="448.0" />
+         </content>
+      </ScrollPane>
+      <Label fx:id="nbrVues" layoutX="35.0" layoutY="200.0" text="Label" />
+      <Label fx:id="nbrComms" layoutX="152.0" layoutY="200.0" text="Label" />
+      <ScrollPane fx:id="commPane" layoutX="249.0" layoutY="347.0" prefHeight="126.0" prefWidth="463.0" />
+      <Button layoutX="139.0" layoutY="437.0" mnemonicParsing="false" onMouseClicked="#backButton" style="-fx-background-radius: 5em; -fx-background-color: #00A2D3;" text="Retour" textFill="#fcfcfc">
+         <graphic>
+            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../Desktop/MedIt/InfoSante/src/edu/esprit/smartInnov/gui/main/img/reply.png" />
+               </image></ImageView>
+         </graphic>
+         <font>
+            <Font name="Ebrima Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>
