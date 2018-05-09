@@ -51,7 +51,7 @@ public class Utilitaire {
 
 	public static InputStream importerImage(Control imgName, boolean updateLabel) {
 		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Image produit");
+		fileChooser.setTitle("Importer image");
 		Utilitaire.setExtFiltersToImg(fileChooser);
 		File img = fileChooser.showOpenDialog(imgName.getScene().getWindow());
 		if (img != null) {

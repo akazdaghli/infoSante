@@ -25,13 +25,15 @@ public class MedicamentService {
 	}
 
 	public void ajouter(Medicament m) {
-		String addQuery = "INSERT INTO Medicament(libelle, idLaboratoire, notice) VALUES (?, ?, ?)";
+		String addQuery = "INSERT INTO Medicament(libelle, idLaboratoire, notice, type, application) VALUES (?, ?, ?, ?, ?)";
 		try {
 			Long genKey = null;
 			PreparedStatement ps = cnx.prepareStatement(addQuery, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, m.getLibelle());
 			ps.setLong(2, m.getLaboratoire().getId());
 			ps.setString(3, m.getNotice());
+			ps.setString(4, m.getType());
+			ps.setString(5, m.getApplication());
 			LOGGER.log(Level.INFO, ps.toString());
 			ps.executeUpdate();
 			ResultSet genKeys = ps.getGeneratedKeys();

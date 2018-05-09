@@ -16,6 +16,7 @@ import edu.esprit.smartInnov.services.MedicamentService;
 import edu.esprit.smartInnov.utils.IConstants;
 import edu.esprit.smartInnov.vues.VMedicament;
 import edu.esprit.smartInnov.vues.VProduit;
+import eu.hansolo.enzo.notification.Notification.Notifier;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -229,6 +230,7 @@ public class MedicamentController {
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK){
 			medicamentService.deleteMedicament(p.getId());
+			Notifier.INSTANCE.notifySuccess("Succès", "Médicament supprimé.");
 			initComponents(userConnected);
 		} else {
 			alert.close();
