@@ -9,6 +9,7 @@ import edu.esprit.smartInnov.entites.Medicament;
 import edu.esprit.smartInnov.services.LaboratoireService;
 import edu.esprit.smartInnov.services.MaladieService;
 import edu.esprit.smartInnov.services.MedicamentService;
+import eu.hansolo.enzo.notification.Notification.Notifier;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.ComboBox;
@@ -56,7 +57,12 @@ public class AjouterMedicamentController {
 	
 	public void ajouter() {
 		Medicament m = new Medicament();
-		m.setLibelle(libelleTextField.getText());
+		if(libelleTextField.getText() != null && !libelleTextField.getText().isEmpty()) {
+			m.setLibelle(libelleTextField.getText());
+		}else {
+			Notifier.INSTANCE.notifyError("Erreur", "Veuillez saisir un libellé.");
+			return;
+		}
 		m.setApplication(applicationCombo.getValue());
 		m.setType(typeCombo.getValue());
 		m.setLaboratoire(laboratoireService.findByLibelle(laboCombo.getValue()));

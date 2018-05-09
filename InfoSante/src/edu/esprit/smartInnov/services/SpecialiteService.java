@@ -22,14 +22,76 @@ public class SpecialiteService {
 		cnx = ConnectionManager.getInstance().getCnx();
 	}
 	
+	public void ajouter(Specialite s) {
+		String addQuery = "INSERT INTO specialite (libelle, type) VALUES (?, ?)";
+		try (PreparedStatement ps = cnx.prepareStatement(addQuery);){
+			ps.setString(1, s.getLibelle());
+			ps.setString(2, s.getType());
+			LOGGER.info(ps.toString());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			LOGGER.severe(e.getMessage());
+		}
+	}
+	
+	public void delete(Specialite s) {
+		String deleteQuery = "DELETE FROM specialite WHERE id = ?";
+		try (PreparedStatement ps = cnx.prepareStatement(deleteQuery);){
+			ps.setLong(1, s.getId());
+			LOGGER.info(ps.toString());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			LOGGER.severe(e.getMessage());
+		}
+	}
+	
+	public void update(Specialite s) {
+		String updateQuery = "UPDATE specialite SET libelle =  ?, type = ? WHERE id = ?";
+		try (PreparedStatement ps = cnx.prepareStatement(updateQuery);){
+			ps.setString(1, s.getLibelle());
+			ps.setString(2, s.getType());
+			ps.setLong(3, s.getId());
+			LOGGER.info(ps.toString());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			LOGGER.severe(e.getMessage());
+		}
+	}
+	
+	public List<Specialite> getSpecialitesByObjectSearch(Specialite s){
+		List<Specialite> specialites = new ArrayList<>();
+		StringBuilder searchQuery = new StringBuilder("SELECT * FROM specialite WHERE 1=1 ") ;
+		if(s.getLibelle() != null && !s.getLibelle().isEmpty()) {
+			searchQuery.append(" AND libelle LIKE '%"+s.getLibelle()+"%'");
+		}
+		if(s.getType() != null && !s.getType().isEmpty()) {
+			searchQuery.append(" AND type LIKE '%"+s.getType()+"%'");
+		}
+		LOGGER.info(searchQuery.toString());
+		try (Statement st = cnx.createStatement();
+				ResultSet rs = st.executeQuery(searchQuery.toString());){
+			while(rs.next()) {
+				Specialite sp = new Specialite();
+				sp.setId(rs.getLong("id"));
+				sp.setLibelle(rs.getString("libelle"));
+				sp.setType(rs.getString("type"));
+				specialites.add(sp);
+			}
+			return specialites;
+		} catch (SQLException e) {
+			LOGGER.severe(e.getMessage());
+		}
+		return null;
+	}
+	
 	public Specialite getSpeciliteById(Long id) {
 		Specialite s = new Specialite();
 		String searchQuery = "SELECT * FROM Specialite WHERE id=?";
-		LOGGER.log(Level.INFO, searchQuery);
 		PreparedStatement ps;
 		try {
 			ps = cnx.prepareStatement(searchQuery);
 			ps.setLong(1, id);
+			LOGGER.info(ps.toString());
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				s.setId(rs.getLong("id"));
@@ -37,7 +99,7 @@ public class SpecialiteService {
 			}
 			return s;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.severe(e.getMessage());
 		}
 		return null;
 	}
@@ -52,21 +114,22 @@ public class SpecialiteService {
 				Specialite s = new Specialite();
 				s.setId(rs.getLong(1));
 				s.setLibelle(rs.getString(2));
+				s.setType(rs.getString(3));
 				specs.add(s);
 			}
 			return specs;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.severe(e.getMessage());
 		}
 		return null;
 	}
 	
 	public Specialite getSpecialiteByLibelle(String libelle) {
 		String searchQuery = "SELECT * FROM Specialite WHERE libelle like ?";
-		LOGGER.log(Level.INFO, searchQuery);
 		Specialite s = new Specialite();
 		try(PreparedStatement st = cnx.prepareStatement(searchQuery)){
 			st.setString(1, libelle);
+			LOGGER.info(st.toString());
 			ResultSet rs = st.executeQuery();
 			while(rs.next()) {
 				s.setId(rs.getLong(1));
@@ -75,7 +138,7 @@ public class SpecialiteService {
 			}
 			return s;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.severe(e.getMessage());
 		}
 		return null;
 	}

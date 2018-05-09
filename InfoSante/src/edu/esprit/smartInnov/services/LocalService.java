@@ -34,11 +34,9 @@ public class LocalService {
 			while(genKeys.next()) {
 				local.setId(genKeys.getLong(1));
 			}
-			
 			return local;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.severe(e.getMessage());
 		}
 		return null;
 	}

@@ -8,6 +8,7 @@ import javax.mail.MessagingException;
 import edu.esprit.smartInnov.entites.Utilisateur;
 import edu.esprit.smartInnov.utils.EnvoiMailUtil;
 import edu.esprit.smartInnov.vues.VProSante;
+import eu.hansolo.enzo.notification.Notification.Notifier;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
@@ -51,6 +52,7 @@ public class MotifRejetModalController {
 		} catch (MessagingException e) {
 			LOGGER.log(Level.SEVERE, e.getMessage());
 		}
+		Notifier.INSTANCE.notifySuccess("Succès", "Inscription rejetée.");
 		motif2.getScene().getWindow().hide();
 	}
 	

@@ -62,6 +62,8 @@ public class SymptomeService {
 	
 	public List<Symptome> getListSymptomes(){
 		List<Symptome> symptomes = new ArrayList<>();
+		MaladieService service = new MaladieService();
+		List<Maladie> maladies ;
 		String searchQuery = "SELECT * FROM symptome";
 		LOGGER.log(Level.INFO, searchQuery);
 		try (Statement ps = cnx.createStatement();){
@@ -70,6 +72,8 @@ public class SymptomeService {
 				Symptome s = new Symptome();
 				s.setId(rs.getLong(1));
 				s.setDesignation(rs.getString(2));
+				maladies = service.getListMaladiesBySymptome(s);
+				s.setMaladies(maladies);
 				symptomes.add(s);
 			}
 			LOGGER.log(Level.INFO, symptomes.size()+" symptomes trouvées!!");
@@ -118,5 +122,61 @@ public class SymptomeService {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public List<Symptome> getSymptomesByDesignation(String des) {
+		String searchQuery = "SELECT * FROM symptome WHERE libelle like '%"+des+"%'";
+		List<Symptome> symps = new ArrayList<>();
+		try(Statement ps = cnx.createStatement()){
+			LOGGER.log(Level.INFO, searchQuery);
+			ResultSet rs = ps.executeQuery(searchQuery);
+			if(rs != null) {
+				while(rs.next()) {
+					Symptome s = new Symptome();
+					s.setId(rs.getLong(1));
+					s.setDesignation(rs.getString(2));
+					symps.add(s);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return symps;
+	}
+	
+	public void supprimer(Symptome s) {
+		String deleteQuery = "DELETE FROM symptome WHERE id = ?";
+		try (PreparedStatement ps = cnx.prepareStatement(deleteQuery);){
+			ps.setLong(1, s.getId());
+			LOGGER.info(ps.toString());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			LOGGER.severe(e.getMessage());
+		}
+	}
+	
+	public void update(Symptome s) {
+		String updateQuery = "UPDATE symptome set libelle = ? WHERE id = ?";
+		try (PreparedStatement ps = cnx.prepareStatement(updateQuery);){
+			ps.setString(1, s.getDesignation());
+			ps.setLong(2, s.getId());
+			LOGGER.info(ps.toString());
+			ps.executeUpdate();
+			updateLigneSymptomeMaladie(s);
+		} catch (SQLException e) {
+			LOGGER.severe(e.getMessage());
+		}
+		
+	}
+	
+	public void updateLigneSymptomeMaladie(Symptome s) {
+		String deleteQuery = "DELETE FROM maladie_symptome WHERE idSymptome = ?";
+		try (PreparedStatement ps = cnx.prepareStatement(deleteQuery);){
+			ps.setLong(1, s.getId());
+			ps.executeUpdate();
+			ajouterListMaladieToSymptome(s.getId(), s.getMaladies());
+		} catch (SQLException e) {
+			LOGGER.severe(e.getMessage());
+		}
 	}
 }

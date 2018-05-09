@@ -8,6 +8,7 @@ import edu.esprit.smartInnov.entites.Experience;
 import edu.esprit.smartInnov.entites.Utilisateur;
 import edu.esprit.smartInnov.services.ExperienceService;
 import edu.esprit.smartInnov.utils.Utilitaire;
+import eu.hansolo.enzo.notification.Notification.Notifier;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextArea;
@@ -46,12 +47,14 @@ public class AjouterExperienceController {
 		if(titre.getText() != null && !titre.getText().isEmpty()) {
 			e.setTitre(titre.getText());
 		}else {
+			Notifier.INSTANCE.notifyError("Erreur", "Veuillez saisir un titre.");
 			return;
 		}
 		
 		if(detail.getText() != null && !detail.getText().isEmpty()) {
 			e.setDetail(detail.getText());
 		}else {
+			Notifier.INSTANCE.notifyError("Erreur", "Veuillez saisir les détail de votre expérience.");
 			return;
 		}
 		
@@ -63,6 +66,7 @@ public class AjouterExperienceController {
 			e.setPhoto(photo);
 		}
 		experienceService.ajouter(e);
+		Notifier.INSTANCE.notifySuccess("Succès", "Veuillez saisir un titre.");
 		
 	}
 	

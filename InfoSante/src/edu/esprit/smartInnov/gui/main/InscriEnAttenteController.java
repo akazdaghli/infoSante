@@ -13,6 +13,7 @@ import edu.esprit.smartInnov.utils.EnvoiMailUtil;
 import edu.esprit.smartInnov.utils.Utilitaire;
 import edu.esprit.smartInnov.vues.VMedicament;
 import edu.esprit.smartInnov.vues.VProSante;
+import eu.hansolo.enzo.notification.Notification.Notifier;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -98,15 +99,16 @@ public class InscriEnAttenteController {
 										VProSante v = getTableView().getItems().get(getIndex());
 										utilisateurService.confirmerProSante(v);
 										getTableView().getItems().remove(getIndex());
-										Alert alert = new Alert(AlertType.INFORMATION);
-										alert.setTitle("Information");
-										alert.setHeaderText("Inscription validée");
-										alert.setContentText("Utilisateur informé par mail.");
-//										try {
-//											EnvoiMailUtil.envoiMail(v.getMail(), "InfoSanté", "Inscription confirmée", "Votre inscription a été validée par nos administrateurs, vous pouvez vous-connectez à votre compte");
-//										} catch (MessagingException e) {
-//											LOGGER.log(Level.SEVERE, e.getMessage());
-//										}
+										Notifier.INSTANCE.notifySuccess("Succès", "Inscription validée.");
+//										Alert alert = new Alert(AlertType.INFORMATION);
+//										alert.setTitle("Information");
+//										alert.setHeaderText("Inscription validée");
+//										alert.setContentText("Utilisateur informé par mail.");
+										try {
+											EnvoiMailUtil.envoiMail(v.getMail(), "InfoSanté", "Inscription confirmée", "Votre inscription a été validée par nos administrateurs, vous pouvez vous-connectez à votre compte");
+										} catch (MessagingException e) {
+											LOGGER.log(Level.SEVERE, e.getMessage());
+										}
 									});
 									setGraphic(confirm);
 									setText(null);

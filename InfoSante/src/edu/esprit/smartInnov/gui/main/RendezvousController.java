@@ -14,6 +14,7 @@ import edu.esprit.smartInnov.utils.IConstants;
 import edu.esprit.smartInnov.vues.VExperience;
 import edu.esprit.smartInnov.vues.VProduit;
 import edu.esprit.smartInnov.vues.VRendezVous;
+import eu.hansolo.enzo.notification.Notification.Notifier;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -93,13 +94,9 @@ public class RendezvousController {
 											if(p.getFlagValide().equals("En cours")) {
 												rendezVousService.cancelRendezVous(p);
 												getTableView().getItems().remove(getIndex());
-												// ajouter notification
+												Notifier.INSTANCE.notifySuccess("Succès", "Rendez-vous annulé");
 											}else {
-												Alert alert = new Alert(AlertType.WARNING);
-												alert.setTitle("Alerte");
-												alert.setHeaderText("Rendez-vous déjà confirmé");
-												alert.setContentText("Ce rendez-vous est  déjà confirmé par votre docteur  vous ne pouvez plus l'annuler");
-												alert.showAndWait();
+												Notifier.INSTANCE.notifyError("Erreur", "Ce rendez-vous est  déjà confirmé par votre docteur  vous ne pouvez plus l'annuler");
 												return;
 											}
 											LOGGER.info("assignement canceled");
@@ -146,7 +143,7 @@ public class RendezvousController {
 												LOGGER.severe(e.getMessage());
 											}
 											LOGGER.info("assignement confirmed");
-											// ajouter notification
+											Notifier.INSTANCE.notifySuccess("Succès", "Rendez-vous confirmé");
 										});
 										setGraphic(confirm);
 										setText(null);

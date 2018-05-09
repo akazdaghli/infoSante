@@ -10,6 +10,7 @@ import edu.esprit.smartInnov.entites.Produit;
 import edu.esprit.smartInnov.services.AvisService;
 import edu.esprit.smartInnov.utils.Utilitaire;
 import edu.esprit.smartInnov.vues.VProduit;
+import eu.hansolo.enzo.notification.Notification.Notifier;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
@@ -63,7 +64,7 @@ public class NoterProduitController {
 			avisService.changeAvis(rate.getRating(),produit.getId(), Main.getUserConnected().getId());
 		}
 		validerBtn.getScene().getWindow().hide();
-		//ajouter notification
+		Notifier.INSTANCE.notifySuccess("Succès", "Produit noté ");
 	}
 	
 }

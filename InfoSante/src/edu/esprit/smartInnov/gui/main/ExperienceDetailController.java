@@ -9,6 +9,7 @@ import edu.esprit.smartInnov.entites.Commentaire;
 import edu.esprit.smartInnov.services.ExperienceService;
 import edu.esprit.smartInnov.utils.Utilitaire;
 import edu.esprit.smartInnov.vues.VExperience;
+import eu.hansolo.enzo.notification.Notification.Notifier;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -124,16 +125,10 @@ public class ExperienceDetailController {
 			c.setDetail(detail);
 			this.nbrComm++;
 			experienceService.ajouterCommentaire(c);
-			//ajouter notification
+			Notifier.INSTANCE.notifySuccess("Succès", "Commentaire ajoutée");
 		}else {
-			Alert alert = new Alert(AlertType.WARNING);
-			alert.setTitle("Attention");
-			alert.setHeaderText("Commentaire");
-			alert.setContentText("Vous ne pouvez pas ajouteruncommentaire vide");
-			alert.showAndWait();
+			Notifier.INSTANCE.notifyError("Erreur", "Vous ne pouvez pas ajouter un commentaire vide");
 		}
-		
-		LOGGER.info("adding comm");
 	}
 	
 	public void backButton() throws IOException {

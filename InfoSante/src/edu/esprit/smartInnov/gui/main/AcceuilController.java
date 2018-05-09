@@ -35,7 +35,11 @@ public class AcceuilController {
 	@FXML
 	private Label dashboardLabel;
 	@FXML
+	private Label symptomeLabel;
+	@FXML
 	private Label phytoLabel;
+	@FXML
+	private Label specialiteLabel;
 	@FXML
 	private Label sendMailLabel;
 	@FXML
@@ -78,6 +82,10 @@ public class AcceuilController {
 	private AnchorPane rvMenuItem;
 	@FXML
 	private AnchorPane inscriEnAttenteMenuItem;
+	@FXML
+	private AnchorPane specialiteMenuItem;
+	@FXML
+	private AnchorPane symptomeMenuItem;
 	@FXML
 	private Circle imgShape;
 
@@ -229,6 +237,30 @@ public class AcceuilController {
 		resetBackgroundColorMenuItems();
 		setMenuItemStyle(rvMenuItem, rendezVousLabel);
 	}
+	
+	public void showSpecialiteView() throws IOException {
+		activeViewLabel.setText("Spécialités");
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("specialiteView.fxml"));
+		AnchorPane view = (AnchorPane) loader.load();
+		SpecialiteController ctrl = loader.getController();
+		ctrl.initComponents();
+		Main.getMainLayout().setCenter(view);
+		resetBackgroundColorMenuItems();
+		setMenuItemStyle(specialiteMenuItem, specialiteLabel);
+	}
+	
+	public void showSymptomeView() throws IOException {
+		activeViewLabel.setText("Symptomes");
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("symptomeView.fxml"));
+		AnchorPane view = (AnchorPane) loader.load();
+		SymptomeController ctrl = loader.getController();
+		ctrl.initComponents();
+		Main.getMainLayout().setCenter(view);
+		resetBackgroundColorMenuItems();
+		setMenuItemStyle(symptomeMenuItem, symptomeLabel);
+	}
 
 	public void resetBackgroundColorMenuItems() {
 		String defaultStyle = "-fx-cursor: hand;-fx-background-color : transparent";
@@ -275,6 +307,14 @@ public class AcceuilController {
 		if(rvMenuItem != null) {
 			rvMenuItem.setStyle(defaultStyle);
 			rendezVousLabel.setStyle(defaultStyle);
+		}
+		if(specialiteMenuItem != null) {
+			specialiteLabel.setStyle(defaultStyle);
+			specialiteMenuItem.setStyle(defaultStyle);
+		}
+		if(symptomeMenuItem != null) {
+			symptomeLabel.setStyle(defaultStyle);
+			symptomeMenuItem.setStyle(defaultStyle);
 		}
 	}
 

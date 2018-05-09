@@ -17,6 +17,7 @@ import edu.esprit.smartInnov.utils.EnvoiMailUtil;
 import edu.esprit.smartInnov.utils.IConstants;
 import edu.esprit.smartInnov.utils.Utilitaire;
 import edu.esprit.smartInnov.vues.VProSante;
+import eu.hansolo.enzo.notification.Notification.Notifier;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -60,52 +61,51 @@ public class PriseRendezVousController {
 		if(date.getValue() != null) {
 			LOGGER.info(date.getValue().getDayOfWeek().getValue()+"");
 			if(date.getValue().getDayOfWeek().getValue() == IConstants.DaysOfWeek.SUNDAY){
+				Notifier.INSTANCE.notifyError("Erreur", "Impossible de prendre un rendez-vous le Dimache");
 				LOGGER.info("dimache ");
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setTitle("Erreur");
-				alert.setHeaderText("Dimache");
-				alert.setContentText("Impossible de prendre un rendez-vous le Dimache");
-				alert.showAndWait();
+//				Alert alert = new Alert(AlertType.ERROR);
+//				alert.setTitle("Erreur");
+//				alert.setHeaderText("Dimache");
+//				alert.setContentText("Impossible de prendre un rendez-vous le Dimache");
+//				alert.showAndWait();
 				return;
 			}else if(date.getValue().getDayOfWeek().getValue() == IConstants.DaysOfWeek.SATURDAY) {
 				LOGGER.info("samedi ");
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setTitle("Erreur");
-				alert.setHeaderText("Dimache");
-				alert.setContentText("Impossible de prendre un rendez-vous le Samedi");
-				alert.showAndWait();
+				Notifier.INSTANCE.notifyError("Erreur", "Impossible de prendre un rendez-vous le Samedi");
+//				Alert alert = new Alert(AlertType.ERROR);
+//				alert.setTitle("Erreur");
+//				alert.setHeaderText("Dimache");
+//				alert.setContentText("Impossible de prendre un rendez-vous le Samedi");
+//				alert.showAndWait();
 				return;
 			}else {
 				List<RendezVous> rendExist = rendezVousService.getRendezVousByDocteurAndDateAndHeure(proSante, Utilitaire.getDateFromLocalDate(date.getValue()), heure.getValue()+"");
 				if(rendExist != null && !rendExist.isEmpty()) {
 					LOGGER.info("samedi ");
-					Alert alert = new Alert(AlertType.INFORMATION);
-					alert.setTitle("Information");
-					alert.setHeaderText("Occupé");
-					alert.setContentText("Le docteur "+proSante.getNom() +" a déjà un rendez-vous à cette date");
-					alert.showAndWait();
+					Notifier.INSTANCE.notifyInfo("Information", "Le docteur "+proSante.getNom() +" a déjà un rendez-vous à cette date");
+//					Alert alert = new Alert(AlertType.INFORMATION);
+//					alert.setTitle("Information");
+//					alert.setHeaderText("Occupé");
+//					alert.setContentText("Le docteur "+proSante.getNom() +" a déjà un rendez-vous à cette date");
+//					alert.showAndWait();
 					return;
 				}else {
 					rv.setDateRendezVs(Utilitaire.getDateFromLocalDate(date.getValue()));
 				}
 			}
-			
 		}else {
 			return;
 		}
-		
 		if(heure.getValue() != null) {
 			rv.setHeureRendezVs(heure.getValue()+"");
 		}else {
 			return;
 		}
-		
 		if(sujet.getText() != null && !sujet.getText().isEmpty()) {
 			rv.setSujet(sujet.getText());
 		}else {
 			return;
 		}
-		
 		rv.setMedecin(proSante);
 		rv.setPatient((Patient) Main.getUserConnected());
 		rv.setFlagValide(false);
@@ -116,8 +116,7 @@ public class PriseRendezVousController {
 		} catch (MessagingException e) {
 			LOGGER.severe(e.getMessage());
 		}
-		// ajouter notification
-		
+		Notifier.INSTANCE.notifySuccess("Succès", "Demande de rendez-vous envoyée");
 		sujet.getScene().getWindow().hide();
 	}
 }

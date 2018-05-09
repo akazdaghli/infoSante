@@ -17,6 +17,7 @@ import edu.esprit.smartInnov.services.LaboratoireService;
 import edu.esprit.smartInnov.services.ProduitService;
 import edu.esprit.smartInnov.utils.IConstants;
 import edu.esprit.smartInnov.utils.Utilitaire;
+import eu.hansolo.enzo.notification.Notification.Notifier;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
@@ -66,41 +67,45 @@ public class AjouterProduitController {
 		if(categorieCombo.getValue() != null && !categorieCombo.getValue().isEmpty()) {
 			p.setCategorie(categorieCombo.getValue());
 		}else {
-			alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Erreur");
-			alert.setHeaderText("Champs obligatoire");
-			alert.setContentText("Le champ catégorie est obligatoire, veuillez le remplir");
-			alert.showAndWait();
+			Notifier.INSTANCE.notifyError("Erreur", "Vous n'etes pas encore inscris, veuillez vous inscrire pour pouvoir se connecter");
+//			alert = new Alert(AlertType.ERROR);
+//			alert.setTitle("Erreur");
+//			alert.setHeaderText("Champs obligatoire");
+//			alert.setContentText("Le champ catégorie est obligatoire, veuillez le remplir");
+//			alert.showAndWait();
 			return;
 		}
 		if(laboCombo.getValue() != null && !laboCombo.getValue().isEmpty()) {
 			p.setLaboratoire(laboratoireService.findByLibelle(laboCombo.getValue()));
 		}else {
-			alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Erreur");
-			alert.setHeaderText("Champs obligatoire");
-			alert.setContentText("Le champ laboratoire est obligatoire, veuillez le remplir");
-			alert.showAndWait();
+//			alert = new Alert(AlertType.ERROR);
+//			alert.setTitle("Erreur");
+//			alert.setHeaderText("Champs obligatoire");
+//			alert.setContentText("Le champ laboratoire est obligatoire, veuillez le remplir");
+//			alert.showAndWait();
+			Notifier.INSTANCE.notifyError("Erreur", "Le champ laboratoire est obligatoire, veuillez le remplir");
 			return;
 		}
 		if(libelleText.getText() != null && !libelleText.getText().isEmpty()) {
 			p.setLibelle(libelleText.getText());
 		}else {
-			alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Erreur");
-			alert.setHeaderText("Champs obligatoire");
-			alert.setContentText("Le champ libellé est obligatoire, veuillez le remplir");
-			alert.showAndWait();
+//			alert = new Alert(AlertType.ERROR);
+//			alert.setTitle("Erreur");
+//			alert.setHeaderText("Champs obligatoire");
+//			alert.setContentText("Le champ libellé est obligatoire, veuillez le remplir");
+//			alert.showAndWait();
+			Notifier.INSTANCE.notifyError("Erreur", "Le champ libellé est obligatoire, veuillez le remplir");
 			return;
 		}
 		if(modeEmploi.getText() != null && !modeEmploi.getText().isEmpty()) {
 			p.setModeEmploi(modeEmploi.getText());
 		}else {
-			alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Erreur");
-			alert.setHeaderText("Champs obligatoire");
-			alert.setContentText("Le champ mode d'emploi est obligatoire, veuillez le remplir");
-			alert.showAndWait();
+//			alert = new Alert(AlertType.ERROR);
+//			alert.setTitle("Erreur");
+//			alert.setHeaderText("Champs obligatoire");
+//			alert.setContentText("Le champ mode d'emploi est obligatoire, veuillez le remplir");
+//			alert.showAndWait();
+			Notifier.INSTANCE.notifyError("Erreur", "Le champ mode d'emploi est obligatoire, veuillez le remplir");
 			return;
 		}
 		if(photo != null) {

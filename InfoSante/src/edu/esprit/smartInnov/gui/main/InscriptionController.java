@@ -24,6 +24,7 @@ import edu.esprit.smartInnov.services.UtilisateurService;
 import edu.esprit.smartInnov.utils.EnvoiMailUtil;
 import edu.esprit.smartInnov.utils.IConstants;
 import edu.esprit.smartInnov.utils.Utilitaire;
+import eu.hansolo.enzo.notification.Notification.Notifier;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -157,21 +158,23 @@ public class InscriptionController {
 		if(Utilitaire.isValidName(nomField.getText())) {
 			user.setNom(nomField.getText());
 		}else {
-			alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Erreur");
-			alert.setHeaderText("Erreur lors de la validation du nom");
-			alert.setContentText("Le nom entré est incorrect! le nom ne peut pas contenir ni des chiffres ni des caractéres spéciaux.");
-			alert.showAndWait();
+			Notifier.INSTANCE.notifyError("Erreur", "Le nom entré est incorrect! le nom ne peut pas contenir ni des chiffres ni des caractéres spéciaux.");
+//			alert = new Alert(AlertType.ERROR);
+//			alert.setTitle("Erreur");
+//			alert.setHeaderText("Erreur lors de la validation du nom");
+//			alert.setContentText("Le nom entré est incorrect! le nom ne peut pas contenir ni des chiffres ni des caractéres spéciaux.");
+//			alert.showAndWait();
 			return;
 		}
 		if(Utilitaire.isValidName(prenomField.getText())) {
 			user.setPrenom(prenomField.getText());
 		}else {
-			alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Erreur");
-			alert.setHeaderText("Erreur lors de la validation du prénom");
-			alert.setContentText("Le prénom entré est incorrect! le prénom ne peut pas contenir ni des chiffres ni des caractéres spéciaux.");
-			alert.showAndWait();
+			Notifier.INSTANCE.notifyError("Erreur", "Le prénom entré est incorrect! le nom ne peut pas contenir ni des chiffres ni des caractéres spéciaux.");
+//			alert = new Alert(AlertType.ERROR);
+//			alert.setTitle("Erreur");
+//			alert.setHeaderText("Erreur lors de la validation du prénom");
+//			alert.setContentText("Le prénom entré est incorrect! le prénom ne peut pas contenir ni des chiffres ni des caractéres spéciaux.");
+//			alert.showAndWait();
 			return;
 		}
 		user.setAdresse(adresseField.getText());
@@ -179,49 +182,54 @@ public class InscriptionController {
 			if(!checkUserMail(mailField.getText())){
 				user.setMail(mailField.getText());
 			}else {
-				alert = new Alert(AlertType.ERROR);
-				alert.setTitle("Erreur");
-				alert.setHeaderText("Erreur lors de la validation du mail");
-				alert.setContentText("L'adresse mail entrée est utilisée par unautre utilisateur! ");
-				alert.showAndWait();
+				Notifier.INSTANCE.notifyError("Erreur", "L'adresse mail entrée est utilisée par un autre utilisateur! ");
+//				alert = new Alert(AlertType.ERROR);
+//				alert.setTitle("Erreur");
+//				alert.setHeaderText("Erreur lors de la validation du mail");
+//				alert.setContentText("L'adresse mail entrée est utilisée par unautre utilisateur! ");
+//				alert.showAndWait();
 				return;
 			}
 		}else {
-			alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Erreur");
-			alert.setHeaderText("Erreur lors de la validation du mail");
-			alert.setContentText("L'adresse mail entrée est incorrect! ");
-			alert.showAndWait();
+			Notifier.INSTANCE.notifyError("Erreur", "L'adresse mail entrée est incorrect! ");
+//			alert = new Alert(AlertType.ERROR);
+//			alert.setTitle("Erreur");
+//			alert.setHeaderText("Erreur lors de la validation du mail");
+//			alert.setContentText("L'adresse mail entrée est incorrect! ");
+//			alert.showAndWait();
 			return;
 		}
 		if(Utilitaire.isValidTel(numTelField.getText())) {
 			user.setNumTel(numTelField.getText());
 		}else {
-			alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Erreur");
-			alert.setHeaderText("Erreur lors de lavalidation du numéro de teléphone");
-			alert.setContentText("Le numéro de teléphone entré est incorrect! ");
-			alert.showAndWait();
+			Notifier.INSTANCE.notifyError("Erreur", "Le numéro de teléphone entré est incorrect! ");
+//			alert = new Alert(AlertType.ERROR);
+//			alert.setTitle("Erreur");
+//			alert.setHeaderText("Erreur lors de lavalidation du numéro de teléphone");
+//			alert.setContentText("Le numéro de teléphone entré est incorrect! ");
+//			alert.showAndWait();
 			return;
 		}
 		if(loginField.getText() != null && !loginField.getText().isEmpty() && !checkUserLogin(loginField.getText())) {
 			user.setLogin(loginField.getText());
 		}else {
-			alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Erreur");
-			alert.setHeaderText("Erreur lors de lavalidation du login");
-			alert.setContentText("Le login entré est utilisé parun autre utilisateur! veuillez en choisir un autre.");
-			alert.showAndWait();
+			Notifier.INSTANCE.notifyError("Erreur", "Le login entré est utilisé parun autre utilisateur! veuillez en choisir un autre.");
+//			alert = new Alert(AlertType.ERROR);
+//			alert.setTitle("Erreur");
+//			alert.setHeaderText("Erreur lors de lavalidation du login");
+//			alert.setContentText("Le login entré est utilisé parun autre utilisateur! veuillez en choisir un autre.");
+//			alert.showAndWait();
 			return;
 		}
 		if(Utilitaire.checkPassword(pwdField.getText()) && Utilitaire.checkConfirmPassword(pwdField.getText(), ConfirmPwdField.getText())) {
 			user.setPwd(pwdField.getText());
 		}else {
-			alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Erreur");
-			alert.setHeaderText("Erreur lors de la validation du mot de passe");
-			alert.setContentText("Les mots de passe saisis ne sont pas identiques, veuillez vérifier votre mot de passe");
-			alert.showAndWait();
+			Notifier.INSTANCE.notifyError("Erreur", "Les mots de passe saisis ne sont pas identiques, veuillez vérifier votre mot de passe");
+//			alert = new Alert(AlertType.ERROR);
+//			alert.setTitle("Erreur");
+//			alert.setHeaderText("Erreur lors de la validation du mot de passe");
+//			alert.setContentText("Les mots de passe saisis ne sont pas identiques, veuillez vérifier votre mot de passe");
+//			alert.showAndWait();
 			return;
 		}
 //		if(isPro.isSelected() && specialites.getValue()!= null && !specialites.getValue().isEmpty()) {
@@ -255,7 +263,6 @@ public class InscriptionController {
 					l.setType(IConstants.TypeLocals.LABORATOIRE);
 					break;
 				}
-				l.setType("cabinet");
 				userPro.setLocal(ls.ajouter(l));
 			}
 		}
@@ -265,27 +272,30 @@ public class InscriptionController {
 		if(isPro.isSelected()) {
 			userPro.setFlagActif(false);
 			utilisateurService.ajouter(userPro);
-			alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Succès");
-			alert.setHeaderText("Inscription effectuée");
-			alert.setContentText("Votre inscription est prise en compte par notre système, un mail vous sera envoyé à l'adresse "+ 
-					mailField.getText() + " pour vérifier votre profession et activer votre inscription.");
-			alert.showAndWait();
+			Notifier.INSTANCE.notifySuccess("Succès", "Votre inscription est prise en compte par notre système, un mail vous sera envoyé à l'adresse "+ 
+														mailField.getText() + " pour vérifier votre profession et activer votre inscription.");
+//			alert = new Alert(AlertType.INFORMATION);
+//			alert.setTitle("Succès");
+//			alert.setHeaderText("Inscription effectuée");
+//			alert.setContentText("Votre inscription est prise en compte par notre système, un mail vous sera envoyé à l'adresse "+ 
+//					mailField.getText() + " pour vérifier votre profession et activer votre inscription.");
+//			alert.showAndWait();
+			
 			try {
 				EnvoiMailUtil.envoiMail(mailField.getText(), "Confirmation Inscription", "Bonjour "+userPro.getNom() +" " + userPro.getPrenom()+".", "Veuillez nous fournir vos documents pour vérifier votre profession.");
 			} catch (MessagingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				
 			};
 			clearAll();
 		}else {
 			user.setFlagActif(true);
 			utilisateurService.ajouter(user);
-			alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Succès");
-			alert.setHeaderText("Inscription effectuée");
-			alert.setContentText("Votre inscription est prise en compte par notre système, bienvenue sur infoSanté");
-			alert.showAndWait();
+			Notifier.INSTANCE.notifySuccess("Succès", "Votre inscription est prise en compte par notre système, bienvenue sur infoSanté");
+//			alert = new Alert(AlertType.INFORMATION);
+//			alert.setTitle("Succès");
+//			alert.setHeaderText("Inscription effectuée");
+//			alert.setContentText("Votre inscription est prise en compte par notre système, bienvenue sur infoSanté");
+//			alert.showAndWait();
 			clearAll();
 		}
 		
@@ -315,18 +325,20 @@ public class InscriptionController {
 					e.printStackTrace();
 				}
 			}else {
-				alert = new Alert(AlertType.ERROR);
-				alert.setTitle("Error");
-				alert.setHeaderText("Login sucerrors");
-				alert.setContentText("Veuillez vérifier vos coordonnées");
-				alert.showAndWait();
+				Notifier.INSTANCE.notifyError("Erreur", "Veuillez vérifier vos coordonnées");
+//				alert = new Alert(AlertType.ERROR);
+//				alert.setTitle("Error");
+//				alert.setHeaderText("Login sucerrors");
+//				alert.setContentText("Veuillez vérifier vos coordonnées");
+//				alert.showAndWait();
 			}
 		}else {
-			alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Error");
-			alert.setHeaderText("Login error");
-			alert.setContentText("Vous n'etes pas encore inscris, veuillez vous inscrire pour pouvoir se connecter");
-			alert.showAndWait();
+			Notifier.INSTANCE.notifyError("Erreur", "Vous n'etes pas encore inscris, veuillez vous inscrire pour pouvoir se connecter");
+//			alert = new Alert(AlertType.ERROR);
+//			alert.setTitle("Error");
+//			alert.setHeaderText("Login error");
+//			alert.setContentText("Vous n'etes pas encore inscris, veuillez vous inscrire pour pouvoir se connecter");
+//			alert.showAndWait();
 		}
 	}
 

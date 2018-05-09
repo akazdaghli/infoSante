@@ -73,14 +73,14 @@
             <Label fx:id="inscriEnAttenteLabel" font="$x1" layoutX="96.0" layoutY="20.0" opacity="0.78" pickOnBounds="false" style="-fx-background-color : #333645;" text="Inscri en attente" textFill="WHITE" />
           </children>
         </AnchorPane>
-        <AnchorPane id="AnchorPane" mouseTransparent="false" prefHeight="66.0" prefWidth="300.0" style="-fx-cursor: hand;">
+        <AnchorPane id="AnchorPane" fx:id="symptomeMenuItem" mouseTransparent="false" onMouseClicked="#showSymptomeView" prefHeight="66.0" prefWidth="300.0" style="-fx-cursor: hand;">
           <children>
             <ImageView id="home" fitHeight="39.0" fitWidth="38.0" layoutX="32.0" layoutY="13.0" pickOnBounds="true">
               <image>
                 <Image preserveRatio="true" smooth="true" url="@img/medicine.png" />
               </image>
             </ImageView>
-            <Label font="$x1" layoutX="96.0" layoutY="20.0" opacity="0.78" style="-fx-background-color : #333645;" text="Symptomes" textFill="WHITE" />
+            <Label fx:id="symptomeLabel" font="$x1" layoutX="96.0" layoutY="20.0" opacity="0.78" style="-fx-background-color : #333645;" text="Symptomes" textFill="WHITE" />
           </children>
         </AnchorPane>
         <AnchorPane id="AnchorPane" fx:id="medicamentMenuItem" mouseTransparent="false" onMouseClicked="#showMedicamentsView" prefHeight="66.0" prefWidth="300.0" style="-fx-cursor: hand;">
@@ -93,14 +93,14 @@
             <Label fx:id="medicamentLabel" font="$x1" layoutX="96.0" layoutY="20.0" opacity="0.78" style="-fx-background-color : #333645;" text="Médicaments" textFill="WHITE" />
           </children>
         </AnchorPane>
-        <AnchorPane id="AnchorPane" fx:id="consultationEnLigneMenuItem" mouseTransparent="false" onMouseClicked="#showConsultationEnLigneView" prefHeight="66.0" prefWidth="300.0" style="-fx-cursor: hand;">
+        <AnchorPane id="AnchorPane" fx:id="specialiteMenuItem" mouseTransparent="false" onMouseClicked="#showSpecialiteView" prefHeight="66.0" prefWidth="300.0" style="-fx-cursor: hand;">
           <children>
             <ImageView id="home" fitHeight="39.0" fitWidth="38.0" layoutX="32.0" layoutY="13.0" pickOnBounds="true">
               <image>
-                <Image preserveRatio="true" smooth="true" url="@img/microscope.png" />
+                <Image url="@../../../../../../../../../Desktop/MedIt/InfoSante/src/edu/esprit/smartInnov/gui/main/img/network.png" />
               </image>
             </ImageView>
-            <Label fx:id="consultationEnLigneLabel" font="$x1" layoutX="96.0" layoutY="20.0" onMouseClicked="#showConsultationEnLigneView" opacity="0.78" style="-fx-background-color : #333645;" text="Visite en ligne" textFill="WHITE" />
+            <Label fx:id="specialiteLabel" font="$x1" layoutX="96.0" layoutY="20.0" opacity="0.78" style="-fx-background-color : #333645;" text="Spécialités" textFill="WHITE" />
           </children>
         </AnchorPane>
         <AnchorPane id="AnchorPane" mouseTransparent="false" prefHeight="66.0" prefWidth="300.0" style="-fx-cursor: hand;">
