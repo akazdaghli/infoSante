@@ -19,7 +19,7 @@ public class VExperience implements Serializable{
 	private String nbrComm;
 	private String nbrVues;
 	private String detail;
-	private InputStream photo;
+	private String photo;
 	
 	private ExperienceService experienceService;
 	private SimpleDateFormat sdf = new SimpleDateFormat(IConstants.DATEPATTERN);
@@ -103,11 +103,11 @@ public class VExperience implements Serializable{
 		this.detail = detail;
 	}
 
-	public InputStream getPhoto() {
+	public String getPhoto() {
 		return photo;
 	}
 
-	public void setPhoto(InputStream photo) {
+	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
 

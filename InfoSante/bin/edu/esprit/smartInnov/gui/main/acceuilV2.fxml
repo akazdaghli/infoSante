@@ -138,6 +138,14 @@
           </image>
         </ImageView>
             <Circle fx:id="imgShape" fill="#1f93ff03" layoutX="36.0" layoutY="38.0" onMouseClicked="#changeProfilPhoto" radius="36.0" stroke="BLACK" strokeType="INSIDE" />
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="889.0" layoutY="13.0" onMouseClicked="#showProfileView" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../Desktop/MedIt/InfoSante/src/edu/esprit/smartInnov/gui/main/img/profile.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
       </children>
     </Pane>
   </top>

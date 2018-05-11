@@ -33,6 +33,22 @@ public class UtilisateurService {
 		cnx = ConnectionManager.getInstance().getCnx();
 	}
 	
+	public void update(Utilisateur user) {
+		String updateQuery = "UPDATE utilisateur SET nom = ?, prenom = ?, mail = ?, login = ? , pwd = ? WHERE id = ?";
+		try (PreparedStatement ps = cnx.prepareStatement(updateQuery);){
+			ps.setString(1, user.getNom());
+			ps.setString(2, user.getPrenom());
+			ps.setString(3, user.getMail());
+			ps.setString(4, user.getLogin());
+			ps.setString(5, user.getPwd());
+			ps.setLong(6, user.getId());
+			LOGGER.log(Level.INFO, ps.toString());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			LOGGER.log(Level.SEVERE, e.getMessage());
+		}
+	}
+	
 	public List<Utilisateur> getMedecins(){
 		String getAllQuery = "SELECT * FROM Utilisateur WHERE profil = '"+IConstants.Profils.MEDECIN +"'";
 		LOGGER.log(Level.INFO, getAllQuery);
@@ -56,7 +72,7 @@ public class UtilisateurService {
 				medecins.add(m);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.log(Level.SEVERE, e.getMessage());
 		}
 		
 		return medecins;
@@ -77,7 +93,7 @@ public class UtilisateurService {
 	}
 	
 	public List<VProSante> getAllVProSante(){
-		String searchQuery = "SELECT * FROM v_pro_sante";
+		String searchQuery = "SELECT * FROM v_pro_sante WHERE flagActif = 1";
 		LOGGER.log(Level.INFO, searchQuery);
 		try(PreparedStatement ps = cnx.prepareStatement(searchQuery)){
 			ResultSet rs = ps.executeQuery();
@@ -188,6 +204,19 @@ public class UtilisateurService {
 			LOGGER.log(Level.SEVERE, e.getMessage());
 		}
 		return true;
+	}
+	
+	public Utilisateur getUtilisateurExistByMail(String mail) {
+		String searchQuery = "SELECT * FROM UTILISATEUR WHERE mail = ?";
+		try(PreparedStatement ps = cnx.prepareStatement(searchQuery)){
+			ps.setString(1, mail);
+			LOGGER.log(Level.INFO, ps.toString());
+			ResultSet rs = ps.executeQuery();
+			return new UtilisateurRowMapper(rs).getFirstUtilisateur();
+		} catch (SQLException e) {
+			LOGGER.log(Level.SEVERE, e.getMessage());
+		}
+		return null;
 	}
 	
 	

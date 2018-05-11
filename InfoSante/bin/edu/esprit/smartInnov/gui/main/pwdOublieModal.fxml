@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="300.0" prefWidth="200.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="edu.esprit.smartInnov.gui.main.PwdOublieController">
+   <children>
+      <Label layoutX="14.0" layoutY="59.0" text="Mail:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="mailTF" layoutX="43.0" layoutY="55.0" style="-fx-background-radius: 5em;" />
+      <Button layoutX="134.0" layoutY="241.0" mnemonicParsing="false" onMouseClicked="#valider" style="-fx-background-color: #00A2D3; -fx-background-radius: 5em;" text="Valider" textFill="#fcfafa">
+         <font>
+            <Font name="Ebrima Bold" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

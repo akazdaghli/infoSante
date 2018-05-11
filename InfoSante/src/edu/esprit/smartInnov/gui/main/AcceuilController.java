@@ -1,4 +1,4 @@
-package edu.esprit.smartInnov.gui.main;
+	package edu.esprit.smartInnov.gui.main;
 
 import java.io.File;
 import java.io.IOException;
@@ -45,6 +45,8 @@ public class AcceuilController {
 	@FXML
 	private Label produitLabel;
 	@FXML
+	private Label maladieLabel;
+	@FXML
 	private Label inscriEnAttenteLabel;
 	@FXML
 	private Label rendezVousLabel;
@@ -86,6 +88,8 @@ public class AcceuilController {
 	private AnchorPane specialiteMenuItem;
 	@FXML
 	private AnchorPane symptomeMenuItem;
+	@FXML
+	private AnchorPane maladieMenuItem;
 	@FXML
 	private Circle imgShape;
 
@@ -261,6 +265,28 @@ public class AcceuilController {
 		resetBackgroundColorMenuItems();
 		setMenuItemStyle(symptomeMenuItem, symptomeLabel);
 	}
+	public void showMaladieView() throws IOException {
+		activeViewLabel.setText("Maladies");
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("maladieView.fxml"));
+		AnchorPane view = (AnchorPane) loader.load();
+		MaladieController ctrl = loader.getController();
+		ctrl.initComponents();
+		Main.getMainLayout().setCenter(view);
+		resetBackgroundColorMenuItems();
+		setMenuItemStyle(maladieMenuItem, maladieLabel);
+	}
+	
+	public void showProfileView() throws IOException {
+		activeViewLabel.setText("Paramétres profile");
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("profileView.fxml"));
+		AnchorPane view = (AnchorPane) loader.load();
+		ProfileController ctrl = loader.getController();
+		ctrl.initComponents();
+		Main.getMainLayout().setCenter(view);
+		resetBackgroundColorMenuItems();
+	}
 
 	public void resetBackgroundColorMenuItems() {
 		String defaultStyle = "-fx-cursor: hand;-fx-background-color : transparent";
@@ -315,6 +341,10 @@ public class AcceuilController {
 		if(symptomeMenuItem != null) {
 			symptomeLabel.setStyle(defaultStyle);
 			symptomeMenuItem.setStyle(defaultStyle);
+		}
+		if(maladieMenuItem != null) {
+			maladieLabel.setStyle(defaultStyle);
+			maladieMenuItem.setStyle(defaultStyle);
 		}
 	}
 

@@ -103,14 +103,14 @@
             <Label fx:id="specialiteLabel" font="$x1" layoutX="96.0" layoutY="20.0" opacity="0.78" style="-fx-background-color : #333645;" text="Spécialités" textFill="WHITE" />
           </children>
         </AnchorPane>
-        <AnchorPane id="AnchorPane" mouseTransparent="false" prefHeight="66.0" prefWidth="300.0" style="-fx-cursor: hand;">
+        <AnchorPane id="AnchorPane" fx:id="maladieMenuItem" mouseTransparent="false"  onMouseClicked="#showMaladieView" prefHeight="66.0" prefWidth="300.0" style="-fx-cursor: hand;">
           <children>
             <ImageView id="home" fitHeight="39.0" fitWidth="38.0" layoutX="32.0" layoutY="13.0" pickOnBounds="true">
               <image>
-                <Image preserveRatio="true" smooth="true" url="@img/mortar.png" />
+                <Image preserveRatio="true" smooth="true" url="@img/pain.png" />
               </image>
             </ImageView>
-            <Label font="$x1" layoutX="96.0" layoutY="20.0" opacity="0.78" style="-fx-background-color : #333645;" text="Phytotherapie" textFill="WHITE" />
+            <Label fx:id="maladieLabel" font="$x1" layoutX="96.0" layoutY="20.0" opacity="0.78" style="-fx-background-color : #333645;" text="Maladies" textFill="WHITE" />
           </children>
         </AnchorPane>
       </children>

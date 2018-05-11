@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="350.0" prefWidth="250.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="edu.esprit.smartInnov.gui.main.LatLongModalController">
+   <children>
+      <Label layoutX="30.0" layoutY="40.0" text="Latitude:" />
+      <Label layoutX="25.0" layoutY="123.0" text="Longitude:" />
+      <TextField fx:id="latTF" layoutX="82.0" layoutY="36.0" promptText="Latitude du cabinet" style="-fx-background-radius: 5em;" />
+      <TextField fx:id="longTF" layoutX="82.0" layoutY="119.0" promptText="Longitude du cabinet" style="-fx-background-radius: 5em;" />
+      <Button layoutX="154.0" layoutY="274.0" mnemonicParsing="false" onMouseClicked="#valider" style="-fx-background-radius: 5em; -fx-background-color: #00A2D3;" text="Valider" textFill="#fcfafa">
+         <font>
+            <Font name="Ebrima Bold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../Desktop/MedIt/InfoSante/src/edu/esprit/smartInnov/gui/main/img/tick-inside-circle.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

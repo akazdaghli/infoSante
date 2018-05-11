@@ -182,6 +182,25 @@ public class MaladieService {
 		return null;
 	}
 	
+	public List<Maladie> getMaladieByObjectSearch(Maladie maladie) {
+		String searchQuery = "SELECT * FROM Maladie WHERE libelle like '%"+maladie.getLibelle()+"%'";
+		List<Maladie> maladies = new ArrayList<>();
+		LOGGER.log(Level.INFO, searchQuery);
+		try(Statement st = cnx.createStatement()){
+			ResultSet rs = st.executeQuery(searchQuery);
+			while(rs.next()) {
+				Maladie m = new Maladie();
+				m.setId(rs.getLong(1));
+				m.setLibelle(rs.getString(2));
+				maladies.add(m);
+			}
+			return maladies;
+		} catch (SQLException e) {
+			LOGGER.log(Level.SEVERE,e.getMessage());
+		}
+		return null;
+	}
+	
 	
 
 }

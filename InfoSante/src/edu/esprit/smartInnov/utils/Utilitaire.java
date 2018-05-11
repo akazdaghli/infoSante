@@ -7,11 +7,13 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigInteger;
+import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -40,11 +42,22 @@ public class Utilitaire {
 		}
 		return hashtext;
 	}
+	
+	public static String generateRandomPassword() {
+		String aToZ="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+		Random rand=new Random();
+	    StringBuilder res=new StringBuilder();
+	    for (int i = 0; i < 17; i++) {
+	       int randIndex=rand.nextInt(aToZ.length()); 
+	       res.append(aToZ.charAt(randIndex));            
+	    }
+	    return res.toString();
+	}
 
 	public static Date getDateFromLocalDate(LocalDate localDate) {
 		return Date.valueOf(localDate);
 	}
-	
+
 	public static Date getSqlDateFromUtilDate(java.util.Date d) {
 		return new Date(d.getTime());
 	}
@@ -77,10 +90,17 @@ public class Utilitaire {
 
 	public static void setExtFiltersToImg(FileChooser fc) {
 		fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Toutes les photos", "*.*"),
-				new FileChooser.ExtensionFilter("PNG", "*.png"),
-				new FileChooser.ExtensionFilter("JPG", "*.jpg"),
-				new FileChooser.ExtensionFilter("BMP", "*.bmp"),
-				new FileChooser.ExtensionFilter("JPEG", "*.jpeg"));
+				new FileChooser.ExtensionFilter("PNG", "*.png"), new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+				new FileChooser.ExtensionFilter("BMP", "*.bmp"), new FileChooser.ExtensionFilter("JPEG", "*.jpeg"));
+	}
+
+	public static boolean isNumeric(String str) {
+		try {
+			double d = Double.parseDouble(str);
+		} catch (NumberFormatException nfe) {
+			return false;
+		}
+		return true;
 	}
 
 	public static boolean verifyHashedPassword(String passwordHashedBd, String passwordHashedSaisi) {

@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 
 import edu.esprit.smartInnov.entites.Local;
 import edu.esprit.smartInnov.utils.ConnectionManager;
+import edu.esprit.smartInnov.vues.VProSante;
 
 public class LocalService {
 
@@ -39,6 +40,42 @@ public class LocalService {
 			LOGGER.severe(e.getMessage());
 		}
 		return null;
+	}
+	
+	public Local getLocalByVProSante(VProSante pro) {
+		String addQuery = "SELECT * FROM local WHERE id = (SELECT idLocal FROM utilisateur WHERE id= ?)";
+		try(PreparedStatement ps = cnx.prepareStatement(addQuery)){
+			ps.setLong(1, pro.getIdProSante());
+			LOGGER.log(Level.INFO, ps.toString());
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				Local l = new Local();
+				l.setAdresse(rs.getString("adresse"));
+				l.setId(rs.getLong("id"));
+				l.setType(rs.getString("type"));
+				l.setLatitude(rs.getDouble("lat"));
+				l.setLongitude(rs.getDouble("longitude"));
+				return l;
+			}
+		} catch (SQLException e) {
+			LOGGER.severe(e.getMessage());
+		}
+		return null;
+	}
+	
+	public void update(Local local) {
+		String updateQuery = "UPDATE local SET adresse = ?, type = ?, lat = ?, longitude = ? WHERE id = ?";
+		try (PreparedStatement ps = cnx.prepareStatement(updateQuery);){
+			ps.setString(1, local.getAdresse());
+			ps.setString(2, local.getType());
+			ps.setDouble(3, local.getLatitude());
+			ps.setDouble(4, local.getLongitude());
+			ps.setLong(5, local.getId());
+			LOGGER.log(Level.INFO, ps.toString());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			LOGGER.severe(e.getMessage());
+		}
 	}
 }
 

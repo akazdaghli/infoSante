@@ -119,6 +119,29 @@ public class MedicamentService {
 		}
 		return medicaments;
 	}
+	
+	public Medicament getMedicamentByLibelle(String lib) {
+		LaboratoireService ls = new LaboratoireService();
+		String searchQuery = "SELECT * FROM Medicament WHERE libelle LIKE '%"+lib+"'%";
+		LOGGER.log(java.util.logging.Level.INFO, searchQuery);
+		try {
+			Statement s = cnx.createStatement();
+			ResultSet rs = s.executeQuery(searchQuery);
+			while (rs.next()) {
+				Medicament med = new Medicament();
+				med.setId(rs.getLong(1));
+				med.setLibelle(rs.getString("libelle"));
+				med.setNotice(rs.getString("notice"));
+				med.setLaboratoire(ls.findById(rs.getLong("idLaboratoire")));
+				med.setType(rs.getString("type"));
+				med.setApplication(rs.getString("application"));
+				return med;
+			}
+		} catch (SQLException e) {
+			LOGGER.log(Level.SEVERE, e.getMessage());
+		}
+		return null;
+	}
 
 	public List<VMedicament> getAllVMedicaments() {
 		List<VMedicament> medicaments = new ArrayList<>();

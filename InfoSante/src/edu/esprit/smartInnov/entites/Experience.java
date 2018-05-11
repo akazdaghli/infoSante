@@ -12,13 +12,13 @@ public class Experience {
 	private int nbrVues;
 	private boolean flagVisible;
 	private Date datePartage;
-	private InputStream photo;
+	private String photo;
 	
 	public Experience() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Experience(Utilisateur utilisateur, String titre, String detail, Date datePartage, int nbrVues, InputStream photo) {
+	public Experience(Utilisateur utilisateur, String titre, String detail, Date datePartage, int nbrVues, String photo) {
 		super();
 		this.utilisateur = utilisateur;
 		this.titre = titre;
@@ -84,11 +84,11 @@ public class Experience {
 		this.datePartage = datePartage;
 	}
 
-	public InputStream getPhoto() {
+	public String getPhoto() {
 		return photo;
 	}
 
-	public void setPhoto(InputStream photo) {
+	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
 	

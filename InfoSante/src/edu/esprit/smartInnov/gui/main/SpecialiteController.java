@@ -23,6 +23,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -46,6 +47,8 @@ public class SpecialiteController {
 	private TextField typeField;
 	@FXML
 	private Button addBtn;
+	@FXML
+	private AnchorPane pane;
 	private List<Specialite> specialites;
 	private SpecialiteService specialiteService;
 	public void initComponents() {

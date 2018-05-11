@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="483.0" prefWidth="724.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="edu.esprit.smartInnov.gui.main.MaladieController">
+   <children>
+      <TableView fx:id="maladiesTable" layoutX="-1.0" layoutY="113.0" prefHeight="370.0" prefWidth="724.0">
+        <columns>
+          <TableColumn fx:id="libelleCol" prefWidth="243.0" text="Libellé" />
+          <TableColumn fx:id="updateCol" prefWidth="241.0" text="Modifier" />
+            <TableColumn fx:id="deleteCol" prefWidth="241.0" text="Supprimer" />
+        </columns>
+      </TableView>
+      <TextField fx:id="libelleTF" layoutX="139.0" layoutY="25.0" style="-fx-background-radius: 5em;" />
+      <Label layoutX="76.0" layoutY="29.0" text="Libellé:" />
+      <Button layoutX="636.0" layoutY="75.0" mnemonicParsing="false" onMouseClicked="#filtrer" style="-fx-background-radius: 5em; -fx-background-color: #00A2D3;" text="Filtrer" textFill="#fcfcfc">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Ebrima Bold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="15.0" fitWidth="13.0" onMouseClicked="#filtrer" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../Desktop/MedIt/InfoSante/src/edu/esprit/smartInnov/gui/main/img/magnifier.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="addBtn" layoutX="541.0" layoutY="75.0" mnemonicParsing="false" style="-fx-background-radius: 5em; -fx-background-color: #00A2D3;" text="Ajouter" textFill="#fcfcfc">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Ebrima Bold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="13.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../Desktop/MedIt/InfoSante/src/edu/esprit/smartInnov/gui/main/img/plus.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>

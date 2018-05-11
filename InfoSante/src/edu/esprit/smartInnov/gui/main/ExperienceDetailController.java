@@ -1,5 +1,6 @@
 package edu.esprit.smartInnov.gui.main;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -69,7 +70,8 @@ public class ExperienceDetailController {
 		Text t = new Text(experience.getDetail());
 		detail.getChildren().add(t);
 		if(experience.getPhoto() != null) {
-			Image img = new Image(experience.getPhoto());
+			File f = new File(experience.getPhoto());
+			Image img = new Image(f.toURI().toString());
 			image.imageProperty().set(img);
 		}
 		comms = experienceService.getListCommByExperience(experience);

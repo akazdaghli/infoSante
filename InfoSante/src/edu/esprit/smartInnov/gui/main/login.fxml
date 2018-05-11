@@ -25,7 +25,7 @@
                 <Color blue="0.271" green="0.212" red="0.200" fx:id="x2" />
               </textFill>
             </Label>
-            <Label font="$x1" layoutX="92.0" layoutY="177.0" prefWidth="187.0" text="Mot de passe:" textFill="$x2" />
+            <Label font="$x1" layoutX="92.0" layoutY="177.0" prefWidth="187.0" text="Mot de passe:" textFill="#333645" />
             <Button layoutX="113.0" layoutY="284.0" mnemonicParsing="false" onAction="#login" prefHeight="49.0" prefWidth="145.0" style="-fx-background-color:#333645;&#10;-fx-background-radius: 5em; &#10;-fx-cursor: hand;" text="Login">
               <font>
                 <Font name="Ebrima Bold" size="22.0" fx:id="x3" />
@@ -34,6 +34,7 @@
                 <Color blue="0.827" green="0.635" red="0.000" fx:id="x4" />
               </textFill>
             </Button>
+                  <Hyperlink layoutX="125.0" layoutY="253.0" onMouseClicked="#showPwOublieModal" text="Mot de passe oublié?" textFill="#333645" />
           </children>
         </AnchorPane>
         <AnchorPane layoutX="35.0" layoutY="22.0" opacity="0.7" prefHeight="564.0" prefWidth="449.0" style="-fx-background-color:#00A2D3;&#10;-fx-background-radius: 1em; ">

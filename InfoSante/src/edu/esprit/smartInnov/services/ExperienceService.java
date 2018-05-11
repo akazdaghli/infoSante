@@ -99,7 +99,7 @@ public class ExperienceService implements Serializable{
 				e.setUser(user.getNom() +" " + user.getPrenom());
 				e.setNbrComm(getNbrCommByExperience(rs.getLong("id"))+"");
 				e.setDetail(rs.getString("detail"));
-				e.setPhoto(rs.getBinaryStream("photo"));
+				e.setPhoto(rs.getString("photo"));
 				experiences.add(e);
 			}
 			return experiences;
@@ -155,7 +155,7 @@ public class ExperienceService implements Serializable{
 				e.setUser(user.getNom() +" " + user.getPrenom());
 				e.setNbrComm(getNbrCommByExperience(rs.getLong("id"))+"");
 				e.setDetail(rs.getString("detail"));
-				e.setPhoto(rs.getBinaryStream("photo"));
+				e.setPhoto(rs.getString("photo"));
 				experiences.add(e);
 			}
 			return experiences;
@@ -225,20 +225,22 @@ public class ExperienceService implements Serializable{
 		}
 	}
 	
-	public void ajouter(Experience e) {
+	public void ajouter(Experience e) throws SQLException {
 		String addQuery =  "INSERT INTO experience (idUser, titre, detail, nbrVues, photo, flagVisible, datePartage) VALUES (?, ?, ?, ?,? ,?, ?)";
 		try (PreparedStatement ps = cnx.prepareStatement(addQuery);){
 			ps.setLong(1, e.getUtilisateur().getId());
 			ps.setString(2, e.getTitre());
 			ps.setString(3, e.getDetail());
 			ps.setInt(4, e.getNbrVues());
-			ps.setBinaryStream(5, e.getPhoto());
+			ps.setString(5, e.getPhoto());
 			ps.setBoolean(6, e.isFlagVisible());
 			ps.setDate(7, e.getDatePartage());
 			LOGGER.info(ps.toString());
 			ps.executeUpdate();
 		} catch (SQLException e1) {
 			LOGGER.info(e1.getMessage());
+			throw e1;
+			
 		}
 	}
 	

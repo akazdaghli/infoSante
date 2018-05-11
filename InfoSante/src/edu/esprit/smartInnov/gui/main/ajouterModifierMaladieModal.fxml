@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="pane" prefHeight="350.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.smartInnov.gui.main.AjouterModifierMaladieController">
+   <children>
+      <Label layoutX="14.0" layoutY="61.0" text="Libellé:" />
+      <TextField fx:id="libelleTF" layoutX="65.0" layoutY="57.0" style="-fx-background-radius: 5em;" />
+      <Button layoutX="162.0" layoutY="292.0" mnemonicParsing="false" onMouseClicked="#valider" style="-fx-background-radius: 5em; -fx-background-color: #00A2D3;" text="Valider" textFill="#f5f5f5">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../Desktop/MedIt/InfoSante/src/edu/esprit/smartInnov/gui/main/img/tick-inside-circle.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Ebrima Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label layoutX="10.0" layoutY="126.0" text="Maladies:" />
+      <Label layoutY="191.0" text="Symptomes:" />
+   </children>
+</AnchorPane>

@@ -31,6 +31,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -43,6 +44,8 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 
 public class InscriptionController {
@@ -87,11 +90,11 @@ public class InscriptionController {
 	private Label adresseLocalLabel;
 	private FileInputStream fis;
 	private InputStream photo;
-	
+
 	private Alert alert;
 	SpecialiteService ss;
 	ProSante userPro;
-	
+
 	public void initComponents() {
 		utilisateurService = new UtilisateurService();
 		final ToggleGroup group = new ToggleGroup();
@@ -102,33 +105,36 @@ public class InscriptionController {
 		ss = new SpecialiteService();
 		List<Specialite> specs = ss.getAllSpecialites();
 		specialites.getItems().clear();
-		for(Specialite s : specs) {
+		for (Specialite s : specs) {
 			specialites.getItems().add(s.getLibelle());
 		}
-//		imageUpload.setOnMouseClicked(event->{
-//			 FileChooser fc = new FileChooser();
-//	           FileChooser.ExtensionFilter ext1 = new FileChooser.ExtensionFilter("JPG files(*.jpg)","*.JPG");
-//	           FileChooser.ExtensionFilter ext2 = new FileChooser.ExtensionFilter("PNG files(*.png)","*.PNG");
-//	           fc.getExtensionFilters().addAll(ext1,ext2);
-//	           File file = fc.showOpenDialog(((Node)event.getSource()).getScene().getWindow());
-//	           
-//	           BufferedImage bf;
-//	            try {
-//	                bf = ImageIO.read(file);
-//	                Image image = SwingFXUtils.toFXImage(bf, null);
-//	                fis = new FileInputStream(file);
-//	            }catch(Exception e) {
-//	            	
-//	            }
-//		});
+		// imageUpload.setOnMouseClicked(event->{
+		// FileChooser fc = new FileChooser();
+		// FileChooser.ExtensionFilter ext1 = new FileChooser.ExtensionFilter("JPG
+		// files(*.jpg)","*.JPG");
+		// FileChooser.ExtensionFilter ext2 = new FileChooser.ExtensionFilter("PNG
+		// files(*.png)","*.PNG");
+		// fc.getExtensionFilters().addAll(ext1,ext2);
+		// File file =
+		// fc.showOpenDialog(((Node)event.getSource()).getScene().getWindow());
+		//
+		// BufferedImage bf;
+		// try {
+		// bf = ImageIO.read(file);
+		// Image image = SwingFXUtils.toFXImage(bf, null);
+		// fis = new FileInputStream(file);
+		// }catch(Exception e) {
+		//
+		// }
+		// });
 	}
-	
+
 	public void importImage() {
 		photo = Utilitaire.importerImage(imageUpload, true);
 	}
-	
+
 	public void changeVisibility() {
-		if(isPro.isSelected()) {
+		if (isPro.isSelected()) {
 			specialiteLabel.setVisible(true);
 			specialiteLabel.setManaged(true);
 			adresseLocalLabel.setVisible(true);
@@ -137,7 +143,7 @@ public class InscriptionController {
 			specialites.setManaged(true);
 			adresseLocal.setVisible(true);
 			adresseLocal.setManaged(true);
-		}else {
+		} else {
 			specialiteLabel.setVisible(false);
 			specialiteLabel.setManaged(false);
 			adresseLocalLabel.setVisible(false);
@@ -148,107 +154,120 @@ public class InscriptionController {
 			specialites.setManaged(false);
 		}
 	}
-	
+
 	public void ajouterUtilisateur() {
 		Utilisateur user = new Patient();
 		user.setDateCreation(new Date(Calendar.getInstance().getTimeInMillis()));
-		if(photo != null) {
+		if (photo != null) {
 			user.setPhoto(photo);
 		}
-		if(Utilitaire.isValidName(nomField.getText())) {
+		if (Utilitaire.isValidName(nomField.getText())) {
 			user.setNom(nomField.getText());
-		}else {
-			Notifier.INSTANCE.notifyError("Erreur", "Le nom entré est incorrect! le nom ne peut pas contenir ni des chiffres ni des caractéres spéciaux.");
-//			alert = new Alert(AlertType.ERROR);
-//			alert.setTitle("Erreur");
-//			alert.setHeaderText("Erreur lors de la validation du nom");
-//			alert.setContentText("Le nom entré est incorrect! le nom ne peut pas contenir ni des chiffres ni des caractéres spéciaux.");
-//			alert.showAndWait();
+		} else {
+			Notifier.INSTANCE.notifyError("Erreur",
+					"Le nom entré est incorrect! le nom ne peut pas contenir ni des chiffres ni des caractéres spéciaux.");
+			// alert = new Alert(AlertType.ERROR);
+			// alert.setTitle("Erreur");
+			// alert.setHeaderText("Erreur lors de la validation du nom");
+			// alert.setContentText("Le nom entré est incorrect! le nom ne peut pas contenir
+			// ni des chiffres ni des caractéres spéciaux.");
+			// alert.showAndWait();
 			return;
 		}
-		if(Utilitaire.isValidName(prenomField.getText())) {
+		if (Utilitaire.isValidName(prenomField.getText())) {
 			user.setPrenom(prenomField.getText());
-		}else {
-			Notifier.INSTANCE.notifyError("Erreur", "Le prénom entré est incorrect! le nom ne peut pas contenir ni des chiffres ni des caractéres spéciaux.");
-//			alert = new Alert(AlertType.ERROR);
-//			alert.setTitle("Erreur");
-//			alert.setHeaderText("Erreur lors de la validation du prénom");
-//			alert.setContentText("Le prénom entré est incorrect! le prénom ne peut pas contenir ni des chiffres ni des caractéres spéciaux.");
-//			alert.showAndWait();
+		} else {
+			Notifier.INSTANCE.notifyError("Erreur",
+					"Le prénom entré est incorrect! le nom ne peut pas contenir ni des chiffres ni des caractéres spéciaux.");
+			// alert = new Alert(AlertType.ERROR);
+			// alert.setTitle("Erreur");
+			// alert.setHeaderText("Erreur lors de la validation du prénom");
+			// alert.setContentText("Le prénom entré est incorrect! le prénom ne peut pas
+			// contenir ni des chiffres ni des caractéres spéciaux.");
+			// alert.showAndWait();
 			return;
 		}
 		user.setAdresse(adresseField.getText());
-		if(Utilitaire.isValidMail(mailField.getText())) {
-			if(!checkUserMail(mailField.getText())){
+		if (Utilitaire.isValidMail(mailField.getText())) {
+			if (!checkUserMail(mailField.getText())) {
 				user.setMail(mailField.getText());
-			}else {
-				Notifier.INSTANCE.notifyError("Erreur", "L'adresse mail entrée est utilisée par un autre utilisateur! ");
-//				alert = new Alert(AlertType.ERROR);
-//				alert.setTitle("Erreur");
-//				alert.setHeaderText("Erreur lors de la validation du mail");
-//				alert.setContentText("L'adresse mail entrée est utilisée par unautre utilisateur! ");
-//				alert.showAndWait();
+			} else {
+				Notifier.INSTANCE.notifyError("Erreur",
+						"L'adresse mail entrée est utilisée par un autre utilisateur! ");
+				// alert = new Alert(AlertType.ERROR);
+				// alert.setTitle("Erreur");
+				// alert.setHeaderText("Erreur lors de la validation du mail");
+				// alert.setContentText("L'adresse mail entrée est utilisée par unautre
+				// utilisateur! ");
+				// alert.showAndWait();
 				return;
 			}
-		}else {
+		} else {
 			Notifier.INSTANCE.notifyError("Erreur", "L'adresse mail entrée est incorrect! ");
-//			alert = new Alert(AlertType.ERROR);
-//			alert.setTitle("Erreur");
-//			alert.setHeaderText("Erreur lors de la validation du mail");
-//			alert.setContentText("L'adresse mail entrée est incorrect! ");
-//			alert.showAndWait();
+			// alert = new Alert(AlertType.ERROR);
+			// alert.setTitle("Erreur");
+			// alert.setHeaderText("Erreur lors de la validation du mail");
+			// alert.setContentText("L'adresse mail entrée est incorrect! ");
+			// alert.showAndWait();
 			return;
 		}
-		if(Utilitaire.isValidTel(numTelField.getText())) {
+		if (Utilitaire.isValidTel(numTelField.getText())) {
 			user.setNumTel(numTelField.getText());
-		}else {
+		} else {
 			Notifier.INSTANCE.notifyError("Erreur", "Le numéro de teléphone entré est incorrect! ");
-//			alert = new Alert(AlertType.ERROR);
-//			alert.setTitle("Erreur");
-//			alert.setHeaderText("Erreur lors de lavalidation du numéro de teléphone");
-//			alert.setContentText("Le numéro de teléphone entré est incorrect! ");
-//			alert.showAndWait();
+			// alert = new Alert(AlertType.ERROR);
+			// alert.setTitle("Erreur");
+			// alert.setHeaderText("Erreur lors de lavalidation du numéro de teléphone");
+			// alert.setContentText("Le numéro de teléphone entré est incorrect! ");
+			// alert.showAndWait();
 			return;
 		}
-		if(loginField.getText() != null && !loginField.getText().isEmpty() && !checkUserLogin(loginField.getText())) {
+		if (loginField.getText() != null && !loginField.getText().isEmpty() && !checkUserLogin(loginField.getText())) {
 			user.setLogin(loginField.getText());
-		}else {
-			Notifier.INSTANCE.notifyError("Erreur", "Le login entré est utilisé parun autre utilisateur! veuillez en choisir un autre.");
-//			alert = new Alert(AlertType.ERROR);
-//			alert.setTitle("Erreur");
-//			alert.setHeaderText("Erreur lors de lavalidation du login");
-//			alert.setContentText("Le login entré est utilisé parun autre utilisateur! veuillez en choisir un autre.");
-//			alert.showAndWait();
+		} else {
+			Notifier.INSTANCE.notifyError("Erreur",
+					"Le login entré est utilisé parun autre utilisateur! veuillez en choisir un autre.");
+			// alert = new Alert(AlertType.ERROR);
+			// alert.setTitle("Erreur");
+			// alert.setHeaderText("Erreur lors de lavalidation du login");
+			// alert.setContentText("Le login entré est utilisé parun autre utilisateur!
+			// veuillez en choisir un autre.");
+			// alert.showAndWait();
 			return;
 		}
-		if(Utilitaire.checkPassword(pwdField.getText()) && Utilitaire.checkConfirmPassword(pwdField.getText(), ConfirmPwdField.getText())) {
+		if (Utilitaire.checkPassword(pwdField.getText())
+				&& Utilitaire.checkConfirmPassword(pwdField.getText(), ConfirmPwdField.getText())) {
 			user.setPwd(pwdField.getText());
-		}else {
-			Notifier.INSTANCE.notifyError("Erreur", "Les mots de passe saisis ne sont pas identiques, veuillez vérifier votre mot de passe");
-//			alert = new Alert(AlertType.ERROR);
-//			alert.setTitle("Erreur");
-//			alert.setHeaderText("Erreur lors de la validation du mot de passe");
-//			alert.setContentText("Les mots de passe saisis ne sont pas identiques, veuillez vérifier votre mot de passe");
-//			alert.showAndWait();
+		} else {
+			Notifier.INSTANCE.notifyError("Erreur",
+					"Les mots de passe saisis ne sont pas identiques, veuillez vérifier votre mot de passe");
+			// alert = new Alert(AlertType.ERROR);
+			// alert.setTitle("Erreur");
+			// alert.setHeaderText("Erreur lors de la validation du mot de passe");
+			// alert.setContentText("Les mots de passe saisis ne sont pas identiques,
+			// veuillez vérifier votre mot de passe");
+			// alert.showAndWait();
 			return;
 		}
-//		if(isPro.isSelected() && specialites.getValue()!= null && !specialites.getValue().isEmpty()) {
-//			ProSante userPro = new ProSante(user);
-//			userPro.setSpecialite(ss.getSpecialiteByLibelle(specialites.getValue()));
-//		}
-//		
-//		if(isPro.isSelected() && adresseLocalLabel.getText() != null && !adresseLocalLabel.getText().isEmpty()) {
-//			LocalService ls = new LocalService();
-//			Local l = new Local();
-//			((ProSante) user).setLocal(ls.ajouter(l));
-//		}
-		
-		if(isPro.isSelected()) {
+		// if(isPro.isSelected() && specialites.getValue()!= null &&
+		// !specialites.getValue().isEmpty()) {
+		// ProSante userPro = new ProSante(user);
+		// userPro.setSpecialite(ss.getSpecialiteByLibelle(specialites.getValue()));
+		// }
+		//
+		// if(isPro.isSelected() && adresseLocalLabel.getText() != null &&
+		// !adresseLocalLabel.getText().isEmpty()) {
+		// LocalService ls = new LocalService();
+		// Local l = new Local();
+		// ((ProSante) user).setLocal(ls.ajouter(l));
+		// }
+
+		if (isPro.isSelected()) {
 			userPro = new ProSante(user);
-			if(specialites.getValue()!= null && !specialites.getValue().isEmpty()) {
+			if (specialites.getValue() != null && !specialites.getValue().isEmpty()) {
 				userPro.setSpecialite(ss.getSpecialiteByLibelle(specialites.getValue()));
 			}
-			if(adresseLocal.getText() != null && !adresseLocal.getText().isEmpty()) {
+			if (adresseLocal.getText() != null && !adresseLocal.getText().isEmpty()) {
 				LocalService ls = new LocalService();
 				Local l = new Local();
 				l.setAdresse(adresseLocal.getText());
@@ -266,80 +285,102 @@ public class InscriptionController {
 				userPro.setLocal(ls.ajouter(l));
 			}
 		}
-		
-	
+
 		utilisateurService = new UtilisateurService();
-		if(isPro.isSelected()) {
+		if (isPro.isSelected()) {
 			userPro.setFlagActif(false);
 			utilisateurService.ajouter(userPro);
-			Notifier.INSTANCE.notifySuccess("Succès", "Votre inscription est prise en compte par notre système, un mail vous sera envoyé à l'adresse "+ 
-														mailField.getText() + " pour vérifier votre profession et activer votre inscription.");
-//			alert = new Alert(AlertType.INFORMATION);
-//			alert.setTitle("Succès");
-//			alert.setHeaderText("Inscription effectuée");
-//			alert.setContentText("Votre inscription est prise en compte par notre système, un mail vous sera envoyé à l'adresse "+ 
-//					mailField.getText() + " pour vérifier votre profession et activer votre inscription.");
-//			alert.showAndWait();
-			
+			Notifier.INSTANCE.notifySuccess("Succès",
+					"Votre inscription est prise en compte par notre système, un mail vous sera envoyé à l'adresse "
+							+ mailField.getText() + " pour vérifier votre profession et activer votre inscription.");
+			// alert = new Alert(AlertType.INFORMATION);
+			// alert.setTitle("Succès");
+			// alert.setHeaderText("Inscription effectuée");
+			// alert.setContentText("Votre inscription est prise en compte par notre
+			// système, un mail vous sera envoyé à l'adresse "+
+			// mailField.getText() + " pour vérifier votre profession et activer votre
+			// inscription.");
+			// alert.showAndWait();
+
 			try {
-				EnvoiMailUtil.envoiMail(mailField.getText(), "Confirmation Inscription", "Bonjour "+userPro.getNom() +" " + userPro.getPrenom()+".", "Veuillez nous fournir vos documents pour vérifier votre profession.");
+				EnvoiMailUtil.envoiMail(mailField.getText(), "Confirmation Inscription",
+						"Bonjour " + userPro.getNom() + " " + userPro.getPrenom() + ".",
+						"Veuillez nous fournir vos documents pour vérifier votre profession.");
 			} catch (MessagingException e) {
-				
-			};
+
+			}
+			;
 			clearAll();
-		}else {
+		} else {
 			user.setFlagActif(true);
 			utilisateurService.ajouter(user);
-			Notifier.INSTANCE.notifySuccess("Succès", "Votre inscription est prise en compte par notre système, bienvenue sur infoSanté");
-//			alert = new Alert(AlertType.INFORMATION);
-//			alert.setTitle("Succès");
-//			alert.setHeaderText("Inscription effectuée");
-//			alert.setContentText("Votre inscription est prise en compte par notre système, bienvenue sur infoSanté");
-//			alert.showAndWait();
+			Notifier.INSTANCE.notifySuccess("Succès",
+					"Votre inscription est prise en compte par notre système, bienvenue sur infoSanté");
+			// alert = new Alert(AlertType.INFORMATION);
+			// alert.setTitle("Succès");
+			// alert.setHeaderText("Inscription effectuée");
+			// alert.setContentText("Votre inscription est prise en compte par notre
+			// système, bienvenue sur infoSanté");
+			// alert.showAndWait();
 			clearAll();
 		}
-		
-		
+
 	}
-	
+
 	public void loginUsingKeyboard(KeyEvent ev) throws NoSuchAlgorithmException {
-		if(ev.getCode().equals(KeyCode.ENTER)) {
+		if (ev.getCode().equals(KeyCode.ENTER)) {
 			login();
 		}
 	}
-	
+
 	public void login() throws NoSuchAlgorithmException {
 		utilisateurService = new UtilisateurService();
 		Utilisateur user = utilisateurService.getUserByLogin(loginTextField.getText());
-		if(user != null ) {
-			if(Utilitaire.verifyHashedPassword(user.getPwd(), Utilitaire.hashMD5Crypt(pwdTextField.getText())) && user.getFlagActif()) {
-//				alert = new Alert(AlertType.INFORMATION);
-//				alert.setTitle("Success");
-//				alert.setHeaderText("Login success");
-//				alert.setContentText("Bienvenue, " + user.getNom() +" "+ user.getPrenom());
-//				alert.showAndWait();
+		if (user != null) {
+			if (Utilitaire.verifyHashedPassword(user.getPwd(), Utilitaire.hashMD5Crypt(pwdTextField.getText()))
+					&& user.getFlagActif()) {
+				// alert = new Alert(AlertType.INFORMATION);
+				// alert.setTitle("Success");
+				// alert.setHeaderText("Login success");
+				// alert.setContentText("Bienvenue, " + user.getNom() +" "+ user.getPrenom());
+				// alert.showAndWait();
 				try {
 					navigateToAcceuilPage(user);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			}else {
+			} else {
 				Notifier.INSTANCE.notifyError("Erreur", "Veuillez vérifier vos coordonnées");
-//				alert = new Alert(AlertType.ERROR);
-//				alert.setTitle("Error");
-//				alert.setHeaderText("Login sucerrors");
-//				alert.setContentText("Veuillez vérifier vos coordonnées");
-//				alert.showAndWait();
+				// alert = new Alert(AlertType.ERROR);
+				// alert.setTitle("Error");
+				// alert.setHeaderText("Login sucerrors");
+				// alert.setContentText("Veuillez vérifier vos coordonnées");
+				// alert.showAndWait();
 			}
-		}else {
-			Notifier.INSTANCE.notifyError("Erreur", "Vous n'etes pas encore inscris, veuillez vous inscrire pour pouvoir se connecter");
-//			alert = new Alert(AlertType.ERROR);
-//			alert.setTitle("Error");
-//			alert.setHeaderText("Login error");
-//			alert.setContentText("Vous n'etes pas encore inscris, veuillez vous inscrire pour pouvoir se connecter");
-//			alert.showAndWait();
+		} else {
+			Notifier.INSTANCE.notifyError("Erreur",
+					"Vous n'etes pas encore inscris, veuillez vous inscrire pour pouvoir se connecter");
+			// alert = new Alert(AlertType.ERROR);
+			// alert.setTitle("Error");
+			// alert.setHeaderText("Login error");
+			// alert.setContentText("Vous n'etes pas encore inscris, veuillez vous inscrire
+			// pour pouvoir se connecter");
+			// alert.showAndWait();
 		}
+	}
+
+	public void showPwOublieModal() throws IOException {
+		 Stage stage = new Stage();
+		    FXMLLoader loader = new FXMLLoader();
+		    loader.setLocation(Main.class.getResource("pwdOublieModal.fxml"));
+		    Parent root = loader.load();
+		    PwdOublieController ctrl = loader.getController();
+		    stage.setScene(new Scene(root));
+		    stage.setTitle("Mot de passe oublié");
+		    stage.initModality(Modality.WINDOW_MODAL);
+		    stage.initOwner((specialiteLabel.getScene().getWindow())) ;
+		    stage.show();
 	}
 
 	public void clearAll() {
@@ -355,25 +396,25 @@ public class InscriptionController {
 		loginTextField.clear();
 		pwdTextField.clear();
 		imageUpload.clear();
-//		initComponents();
+		// initComponents();
 	}
-	
+
 	public boolean checkUserLogin(String login) {
 		return utilisateurService.isUtilisateurExistByLogin(login);
 	}
-	
+
 	public boolean checkUserMail(String mail) {
 		return utilisateurService.isUtilisateurExistByMail(mail);
-		
+
 	}
-	
+
 	private void navigateToAcceuilPage(Utilisateur userConnected) throws IOException {
-//		FXMLLoader loader = new FXMLLoader(Main.class.getResource("acceuilV2.fxml"));
-//		Parent root = loader.load();
-//		AcceuilController acceuilController = loader.getController();
-//		acceuilController.setUserConnected(userConnected);
-//		acceuilController.initComponents();
-//		loginTextField.getScene().setRoot(root);
+		// FXMLLoader loader = new FXMLLoader(Main.class.getResource("acceuilV2.fxml"));
+		// Parent root = loader.load();
+		// AcceuilController acceuilController = loader.getController();
+		// acceuilController.setUserConnected(userConnected);
+		// acceuilController.initComponents();
+		// loginTextField.getScene().setRoot(root);
 		Main.showAcceuilView(userConnected);
 	}
 
@@ -381,15 +422,13 @@ public class InscriptionController {
 		return nomField;
 	}
 
-
 	public void setNomField(TextField nomField) {
 		this.nomField = nomField;
 	}
-	
+
 	public Button getInscrire() {
 		return inscrire;
 	}
-
 
 	public void setInscrire(Button inscrire) {
 		this.inscrire = inscrire;

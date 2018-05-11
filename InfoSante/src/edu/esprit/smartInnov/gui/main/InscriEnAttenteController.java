@@ -97,18 +97,15 @@ public class InscriEnAttenteController {
 									confirm.setGraphic(new ImageView(confirmImg));
 									confirm.setOnMouseClicked(event ->{
 										VProSante v = getTableView().getItems().get(getIndex());
-										utilisateurService.confirmerProSante(v);
-										getTableView().getItems().remove(getIndex());
-										Notifier.INSTANCE.notifySuccess("Succès", "Inscription validée.");
-//										Alert alert = new Alert(AlertType.INFORMATION);
-//										alert.setTitle("Information");
-//										alert.setHeaderText("Inscription validée");
-//										alert.setContentText("Utilisateur informé par mail.");
 										try {
-											EnvoiMailUtil.envoiMail(v.getMail(), "InfoSanté", "Inscription confirmée", "Votre inscription a été validée par nos administrateurs, vous pouvez vous-connectez à votre compte");
-										} catch (MessagingException e) {
-											LOGGER.log(Level.SEVERE, e.getMessage());
+											showLatLongModal(event, v);
+											getTableView().getItems().remove(getIndex());
+										} catch (IOException e1) {
+											LOGGER.log(Level.SEVERE, e1.getMessage());
 										}
+//										utilisateurService.confirmerProSante(v);
+//										Notifier.INSTANCE.notifySuccess("Succès", "Inscription validée.");
+										
 									});
 									setGraphic(confirm);
 									setText(null);
@@ -166,6 +163,19 @@ public class InscriEnAttenteController {
 		listProSante.setItems(data);
 	}
 	
+	public void showLatLongModal(MouseEvent event, VProSante v) throws IOException {
+		Stage stage = new Stage();
+	    FXMLLoader loader = new FXMLLoader();
+	    loader.setLocation(Main.class.getResource("latLongModal.fxml"));
+	    Parent root = loader.load();
+	    LatLongModalController ctrl = loader.getController();
+	    stage.setScene(new Scene(root));
+	    stage.setTitle("Confirmation Professionnel de santé");
+	    stage.initModality(Modality.WINDOW_MODAL);
+	    stage.initOwner(((Node)event.getSource()).getScene().getWindow() );
+	    stage.show();
+	    ctrl.initComponents(v);
+	}
 	
 	public void showModalMotifRejet(MouseEvent event, VProSante v) throws IOException {
 	 	Stage stage = new Stage();

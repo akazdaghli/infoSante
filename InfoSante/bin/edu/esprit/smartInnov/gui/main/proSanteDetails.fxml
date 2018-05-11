@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import com.lynden.gmapsfx.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="450.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.smartInnov.gui.main.ProSanteDetailsController">
+<AnchorPane fx:id="pane" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.smartInnov.gui.main.ProSanteDetailsController">
   <!-- TODO Add Nodes -->
   <children>
-    <Label fx:id="nom" layoutX="14.0" layoutY="9.0" text="Label" />
-    <Label fx:id="prenom" layoutX="214.0" layoutY="9.0" text="Label" />
-      <GoogleMapView fx:id="map" layoutX="3.0" layoutY="26.0" prefHeight="410.0" prefWidth="718.0" />
+    <Label fx:id="nom" layoutX="174.0" layoutY="6.0" text="Label">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="115.0" layoutY="6.0" text="Docteur:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
   </children>
 </AnchorPane>

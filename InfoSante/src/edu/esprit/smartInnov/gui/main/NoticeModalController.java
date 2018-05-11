@@ -14,6 +14,8 @@ import edu.esprit.smartInnov.vues.VMedicament;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 
 public class NoticeModalController {
 
@@ -22,12 +24,18 @@ public class NoticeModalController {
 	private Label noticeLabel;
 	
 	@FXML
+	private TextFlow noticeTF;
+	
+	@FXML
 	private Button exportButton;
 	
 	private VMedicament vMed;
 	public void initComponents(VMedicament med) {
 		vMed = med;
-		noticeLabel.setText(med.getNotice());
+		Text notice = new Text(med.getNotice());
+		noticeTF.getChildren().clear();
+		noticeTF.getChildren().add(notice);
+//		noticeLabel.setText(med.getNotice());
 		
 	}
 	
