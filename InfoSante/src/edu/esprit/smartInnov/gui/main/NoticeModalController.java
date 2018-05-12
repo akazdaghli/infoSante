@@ -7,6 +7,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
+
+
 import edu.esprit.smartInnov.vues.VMedicament;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
