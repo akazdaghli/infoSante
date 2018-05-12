@@ -6,9 +6,6 @@ import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.aspose.words.Document;
-import com.aspose.words.DocumentBuilder;
-import com.aspose.words.License;
 
 import edu.esprit.smartInnov.vues.VMedicament;
 import javafx.fxml.FXML;
