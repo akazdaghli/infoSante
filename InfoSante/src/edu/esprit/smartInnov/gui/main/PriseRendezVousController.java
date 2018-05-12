@@ -1,6 +1,7 @@
 package edu.esprit.smartInnov.gui.main;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -78,6 +79,9 @@ public class PriseRendezVousController {
 //				alert.setContentText("Impossible de prendre un rendez-vous le Samedi");
 //				alert.showAndWait();
 				return;
+			}else if(Utilitaire.getDateFromLocalDate(date.getValue()).before(new Date())){
+				LOGGER.info("samedi ");
+				Notifier.INSTANCE.notifyError("Erreur", "Veuillezchoisir une date antérieure");
 			}else {
 				List<RendezVous> rendExist = rendezVousService.getRendezVousByDocteurAndDateAndHeure(proSante, Utilitaire.getDateFromLocalDate(date.getValue()), heure.getValue()+"");
 				if(rendExist != null && !rendExist.isEmpty()) {

@@ -93,7 +93,7 @@ public class RendezVousService {
 	}
 	
 	public List<VRendezVous> getListVRendezVousByPatient(Patient p){
-		String searchQuery = "SELECT * FROM rendezvous WHERE idPatient = ? and date  > ? ORDER BY date";
+		String searchQuery = "SELECT * FROM rendezvous WHERE idPatient = ? and date  >= ? ORDER BY date";
 		LOGGER.log(Level.INFO, searchQuery);
 		List<VRendezVous> rendezvous = new ArrayList<>();
 		Calendar c = Calendar.getInstance();

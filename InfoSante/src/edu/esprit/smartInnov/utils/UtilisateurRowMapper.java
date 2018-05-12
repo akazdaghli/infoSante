@@ -3,6 +3,7 @@ package edu.esprit.smartInnov.utils;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import edu.esprit.smartInnov.entites.Admin;
@@ -53,7 +54,11 @@ public class UtilisateurRowMapper {
 				user.setMail(rs.getString(MAILCOLUMN));
 				user.setAdresse(rs.getString(ADRESSECOLUMN));
 				user.setFlagActif(rs.getBoolean(ACTIFCOLUMN));
-				user.setDateCreation(rs.getDate(DATECREATIONCOLUMN));
+				try {
+					user.setDateCreation(rs.getDate(DATECREATIONCOLUMN));
+				} catch (Exception e) {
+					user.setDateCreation(Utilitaire.getSqlDateFromUtilDate(new Date()));
+				}
 				user.setLogin(rs.getString(LOGINCOLUMN));
 				user.setPwd(rs.getString(PWDCOLUMN));
 				user.setNumTel(rs.getString(NUMTELCOLUMN));
