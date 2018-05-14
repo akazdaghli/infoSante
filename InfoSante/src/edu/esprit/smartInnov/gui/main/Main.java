@@ -33,6 +33,7 @@ public class Main extends Application {
 		CronTrigger.run();
 		
 	}
+	// chargement de la page d'accueil 
 	
 	public static void showLoginView() throws IOException {
 		FXMLLoader loader = new FXMLLoader();

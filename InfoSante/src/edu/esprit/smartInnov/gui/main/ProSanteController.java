@@ -93,6 +93,9 @@ public class ProSanteController {
 		});
 	}
 	
+	
+	
+	
 	public void filter() {
 		VProSante v = new VProSante();
 		v.setAdresse(filterAdresse.getText());
