@@ -33,7 +33,7 @@ public class Main extends Application {
 		CronTrigger.run();
 		
 	}
-	// chargement de la page d'accueil 
+	//jedddddddddddddddddddddddddddddddddddddddddddddddddddddddd
 	
 	public static void showLoginView() throws IOException {
 		FXMLLoader loader = new FXMLLoader();
@@ -45,6 +45,8 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
+	
+	
 	
 	
 	

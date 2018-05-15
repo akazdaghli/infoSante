@@ -64,7 +64,7 @@ public class ProSanteController {
 	private Button showModal;
 	private UtilisateurService utilisateurService;
 	SpecialiteService ss;
-	
+	//chargement de la page
 	public void initComponents() {
 		utilisateurService = new UtilisateurService();
 		List<VProSante> proSantes = utilisateurService.getAllVProSante();
@@ -75,7 +75,7 @@ public class ProSanteController {
 		for(Specialite s : specs) {
 			filterSpecialite.getItems().add(s.getLibelle());
 		}
-		
+		//remplissage de la page
 		fillTableView(proSantes);
 		listProSante.setRowFactory(ev -> {
 			TableRow<VProSante> row = new TableRow<VProSante>();
@@ -95,7 +95,7 @@ public class ProSanteController {
 	
 	
 	
-	
+	//filtre
 	public void filter() {
 		VProSante v = new VProSante();
 		v.setAdresse(filterAdresse.getText());
@@ -104,7 +104,7 @@ public class ProSanteController {
 		v.setLibelle(filterSpecialite.getValue());
 		fillTableView(utilisateurService.getListMedecinsFiltred(v));
 	}
-	
+	//Map
 	public void showDetailsModal(MouseEvent event,VProSante rowData) throws IOException {
 		    Stage stage = new Stage();
 		    FXMLLoader loader = new FXMLLoader();
@@ -118,7 +118,7 @@ public class ProSanteController {
 		    stage.show();
 		    ctrl.initComponents(rowData);
 	}
-	
+	//charger table view par les detailles
 	public void fillTableView(List<VProSante> dataList) {
 		ObservableList<VProSante> data = FXCollections.observableArrayList(dataList);
 		nomCol.setCellValueFactory( new PropertyValueFactory<VProSante,String>("nom"));
@@ -134,6 +134,7 @@ public class ProSanteController {
 						@Override
 						public TableCell<VProSante, String> call(TableColumn<VProSante, String> param) {
 							final TableCell<VProSante, String> cell = new TableCell<VProSante, String>(){
+								//declaration de page rdv
 								final Button maladie = new Button("Rendez-vous");
 								@Override
 								public void updateItem(String item, boolean empty) {
@@ -171,7 +172,7 @@ public class ProSanteController {
 		}
 		listProSante.setItems(data);
 	}
-	
+	//page prise de rdv FXML
 	public void showPriseRendezvousView(MouseEvent event, VProSante rowData) throws IOException {
 		   Stage stage = new Stage();
 		    FXMLLoader loader = new FXMLLoader();

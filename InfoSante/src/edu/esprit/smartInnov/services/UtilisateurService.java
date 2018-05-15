@@ -153,7 +153,7 @@ public class UtilisateurService {
 		}
 		return null;
 	}
-	
+	//jedddddddddddddddddddddddddddddddddddddddddddddddddd
 	public Utilisateur getUserByLogin(String login) {
 		String searchQuery = "SELECT * FROM UTILISATEUR WHERE login = ?";
 		try(PreparedStatement ps = cnx.prepareStatement(searchQuery)){

@@ -103,7 +103,7 @@ public class SpecialiteService {
 		}
 		return null;
 	}
-	
+	//jedddddddddddddddddddddddddddddddddddddddd
 	public List<Specialite> getAllSpecialites(){
 		String searchQuery = "SELECT * FROM Specialite";
 		LOGGER.log(Level.INFO, searchQuery);
